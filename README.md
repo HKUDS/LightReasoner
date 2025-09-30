@@ -17,12 +17,21 @@ LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?
   <a href="https://github.com/QwenLM/Qwen2.5-Math"><b>[🔗 Baselines]</b></a>
 </p>
 
+
+
 <p align="center">
-    <img src="./docs/static/images/efficiency_vs_perf.png" width="1000">
-        <br>
-    <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
-    90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
+  <img src="./assets/radar_1.5B.png" width="230" />
+  <img src="./assets/radar_7B.png" width="230" />
+  <br>
+  <img src="./assets/radar_ds1.5B.png" width="230" />
+  <img src="./assets/radar_1.5Bins.png" width="230" />
+  <br>
+  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
+  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
 </p>
+
+
+
 
 
 ## 🔥 News
@@ -31,10 +40,18 @@ LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?
 - [2025/08] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
 
 
+
 ## 💡 Introduction
 
 **LightReasoner** is a self-supervised framework that enhances reasoning in LLMs by contrasting them against smaller, weaker models.  
 Instead of treating all tokens equally, LightReasoner focuses only on *informative reasoning steps* identified via **Expert–Amateur KL divergence**.
+
+<p align="center">
+  <img src="./assets/lr_new.png" width="600" />
+  <br>
+  <em>Figure 2: Overview of the LightReasoner framework. Informative step selection and contrastive supervision
+  transform Expert–Amateur divergence into efficient reasoning signals.</em>
+</p>
 
 - **Stage 1 — Sampling:** Expert and Amateur models generate predictions under the same prefixes. Steps with high divergence are retained as critical reasoning points.  
 - **Stage 2 — Fine-tuning:** Contrastive soft labels encode the Expert’s advantage. The Expert is then fine-tuned with LoRA to reinforce its strengths.
