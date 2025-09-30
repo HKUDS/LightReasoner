@@ -47,7 +47,7 @@ LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?
 Instead of treating all tokens equally, LightReasoner focuses only on *informative reasoning steps* identified via **Expert–Amateur KL divergence**.
 
 <p align="center">
-  <img src="./assets/lr_new.png" width="600" />
+  <img src="./assets/lr_new.png" width="800" />
   <br>
   <em>Figure 2: Overview of the LightReasoner framework. Informative step selection and contrastive supervision
   transform Expert–Amateur divergence into efficient reasoning signals.</em>
@@ -59,13 +59,38 @@ Instead of treating all tokens equally, LightReasoner focuses only on *informati
 This turns weaker models into effective *teaching signals*, enabling order-of-magnitude efficiency gains without relying on ground-truth labels.
 
 
-## 📊 Results
 
-<p align="center">
-    <img src="./docs/static/images/results_table.png" width="1000">
-        <br>
-    <em>Table 1: LightReasoner achieves comparable or superior accuracy to SFT across 5 models × 7 benchmarks.</em>
-</p>
+
+
+
+## 📊 Main Results
+
+| Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
+|-----------------------------------------------|-------|------|-------|-------|-------------------|---------------|----------------|------|
+| **<nobr>Qwen2.5-Math-1.5B</nobr>**            |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 42.5  | 34.2 | 68.8  | 68.1  | 9.9               | 23.7          | 49.8           | 42.4 |
+| + SFT                                         | 69.2  | 57.1 | 64.1  | 70.2  | **15.1**          | **27.6**      | 47.7           | 50.1 |
+| + LightR                                      | **70.6** | **59.3** | **76.0** | **79.8** | 11.4 | 27.1 | **54.9** | **54.2** |
+| **<nobr>Qwen2.5-Math-1.5B-Instruct</nobr>**   |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 84.8  | 75.8 | 94.2  | 94.7  | 29.4              | 37.5          | 57.4           | 67.7 |
+| + SFT                                         | 85.4  | 75.8 | 93.5  | 94.7  | 31.6              | 37.5          | 56.2           | 67.8 |
+| + LightR                                      | **86.7** | 75.5 | 93.0 | 94.1 | **32.0** | **37.8** | 55.2 | **67.8** |
+| **<nobr>DeepSeek-R1-Distill-Qwen-1.5B</nobr>**|       |      |       |       |                   |               |                |      |
+| Baseline                                      | 75.2  | 54.2 | 79.9  | 84.9  | 16.2              | 19.1          | 22.3           | 50.3 |
+| + SFT                                         | 78.2  | **60.3** | 81.5 | 87.4 | **18.4** | 21.2 | 26.2 | 53.3 |
+| + LightR                                      | **79.5** | 60.2 | **83.5** | **87.5** | 18.0 | **36.5** | **26.2** | **55.9** |
+| **<nobr>Qwen2.5-Math-7B</nobr>**              |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 57.5  | 51.8 | 67.9  | 72.7  | 14.0              | 16.0          | 69.8           | 50.0 |
+| + SFT                                         | 64.4  | **63.3** | 76.2 | 76.6 | 12.1 | **20.5** | 68.5 | 54.5 |
+| + LightR                                      | **67.9** | 57.8 | **77.2** | **80.6** | 12.1 | 16.9 | **70.5** | **54.7** |
+| **<nobr>Qwen2.5-Math-7B-Instruct</nobr>**     |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 95.2  | 83.2 | 93.9  | 95.3  | 33.8              | 41.5          | 69.3           | 73.2 |
+| + SFT                                         | 95.4  | 83.1 | **94.1** | 95.2 | **38.2** | 40.7 | 68.2 | **73.6** |
+| + LightR                                      | **95.8** | **83.6** | 93.1 | 95.2 | 34.2 | 39.0 | 67.8 | 72.7 |
+
+
+
+
 
 - **+28.1%** improvement on GSM8K with Qwen2.5-Math-1.5B.  
 - **+25.1%** improvement on MATH with Qwen2.5-Math-1.5B.  
