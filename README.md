@@ -1,8 +1,18 @@
-<h1 align="center">
+<!-- <h1 align="center">
 <img src="./docs/static/images/lightreasoner_logo.png" width="100" alt="lightreasoner-logo" />
 <br>
-LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?
+LightReasoner: 
+
+Can Small Language Models Teach Large Language Models Reasoning?
+</h1> -->
+
+<h1 align="center">
+<img src="./assets/lr_logo.png" width="100" alt="lightreasoner-logo" />
+<br>
+LightReasoner:  
+Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
+
 
 <div align="center">
 
