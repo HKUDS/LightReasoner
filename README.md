@@ -109,11 +109,29 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 
 
 
-
 - **+28.1%** improvement on GSM8K with Qwen2.5-Math-1.5B.  
 - **+25.1%** improvement on MATH with Qwen2.5-Math-1.5B.  
 - Consistent gains across GSM8K, MATH, SVAMP, ASDiv, Minerva Math, OlympiadBench, and MMLU STEM.  
 - Efficiency: **90% less time**, **80% fewer problems**, **99% fewer tokens**.  
+
+
+
+| **Method** | **Time** | **Probs.** | **Tokens** | **Gain** |
+|------------|----------|------------|------------|----------|
+| **Qwen2.5-Math-1.5B** |||||
+| + SFT      | 4.0h     | 3952       | 1.77M      | +7.7%   |
+| **+ LightR** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
+| **Qwen2.5-Math-7B** |||||
+| + SFT      | 9.5h     | 6029       | 2.20M      | +4.5%   |
+| **+ LightR** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
+| **DeepSeek-R1-Distill-Qwen-1.5B** |||||
+| + SFT      | 3.6h     | 6023       | 5.95M      | +3.0%   |
+| **+ LightR** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
+| **Qwen2.5-Math-1.5B-Instruct** |||||
+| + SFT      | 3.4h     | 7153       | 2.08M      | +0.1%   |
+| **+ LightR** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
+
+
 
 
 ## 🚀 Quick Start
