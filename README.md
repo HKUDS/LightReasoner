@@ -40,9 +40,7 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </p> -->
 
 <p align="center">
-  <img src="./assets/radar_1.5B.png" width="230" />
-  <img src="./assets/radar_7B.png" width="230" />
-  <img src="./assets/radar_ds1.5B.png" width="230" />
+  <img src="./assets/lr_bars.png" width="800" />
   <br>
   <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
   90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
@@ -119,19 +117,27 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 | **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Avg. Gain** |
 |------------|----------|------------|------------|----------|
 | **Qwen2.5-Math-1.5B** |||||
-| + SFT      | 4.0h     | 3952       | 1.77M      | +7.7%   |
-| **+ LightR** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
+| + SFT (RFT)      | 4.0h     | 3952       | 1.77M      | +7.7%   |
+| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
 | **Qwen2.5-Math-7B** |||||
-| + SFT      | 9.5h     | 6029       | 2.20M      | +4.5%   |
-| **+ LightR** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
+| + SFT (RFT)      | 9.5h     | 6029       | 2.20M      | +4.5%   |
+| **+ LightReasoner** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
 | **DeepSeek-R1-Distill-Qwen-1.5B** |||||
-| + SFT      | 3.6h     | 6023       | 5.95M      | +3.0%   |
-| **+ LightR** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
+| + SFT (RFT)     | 3.6h     | 6023       | 5.95M      | +3.0%   |
+| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
 | **Qwen2.5-Math-1.5B-Instruct** |||||
-| + SFT      | 3.4h     | 7153       | 2.08M      | +0.1%   |
-| **+ LightR** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
+| + SFT (RFT)     | 3.4h     | 7153       | 2.08M      | +0.1%   |
+| **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
-
+<p align="center">
+  <img src="./assets/radar_1.5B.png" width="230" />
+  <img src="./assets/radar_7B.png" width="230" />
+  <img src="./assets/radar_ds1.5B.png" width="230" />
+  <img src="./assets/radar_1.5Bins.png" width="230" />
+  <br>
+  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
+  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
+</p>
 
 ## 🚀 Quick Start
 
