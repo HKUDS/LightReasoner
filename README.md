@@ -162,21 +162,20 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 
 <!-- Left Table -->
   
-| **Attribute**        | **Efficiency** | **SFT** | **LightR** |
+| **Attribute**        | **Time** | **SFT** | **LightR** |
 |-----------------------|----------------|---------|------------|
-| Full trajectories     | ⬇️          | ✅      | ❌         |
-| All-token tuning      | ⬇️          | ✅      | ❌         |
-| GT verification       | ⬇️          | ✅      | ❌         |
-| Prefix termination    | ⬆️          | ❌      | ✅         |
-| Selective tokens      | ⬆️          | ❌      | ✅         |
-| Verification-free     | ⬆️          | ❌      | ✅         |
+| Full trajectories     | ⬆️          | ✅      | ❌         |
+| All-token tuning      | ⬆️          | ✅      | ❌         |
+| Prefix termination    | ⬇️          | ❌      | ✅         |
+| Selective tokens      | ⬇️          | ❌      | ✅         |
+| Verification-free     | ⬇️          | ❌      | ✅         |
 
 </td>
 <td>
 
 <!-- Right Table -->
 
-| **Attribute**         | **Practicality** | **CD**      | **LightR** |
+| **Attribute**         | **Utility** | **CD**      | **LightR** |
 |------------------------|------------------|-------------|------------|
 | Contrast usage         | /                | Inference   | Training   |
 | Size-based contrast    | ⬇️            | ✅          | ❌         |
