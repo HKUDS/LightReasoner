@@ -130,14 +130,45 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
 <p align="center">
-  <img src="./assets/radar_1.5B.png" width="230" />
-  <img src="./assets/radar_7B.png" width="230" />
-  <img src="./assets/radar_ds1.5B.png" width="230" />
-  <img src="./assets/radar_1.5Bins.png" width="230" />
+  <img src="./assets/radar_1.5B.png" width="200" />
+  <img src="./assets/radar_7B.png" width="200" />
+  <img src="./assets/radar_ds1.5B.png" width="200" />
+  <img src="./assets/radar_1.5Bins.png" width="200" />
   <br>
   <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
   90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
 </p>
+
+
+| **Amateur Model** | **Perf. Gap** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **AVG.** |
+|-------------------|-------------|-----------|----------|-----------|-----------|---------------|----------|
+| **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
+| **<nobr>Qwen2.5-0.5B</nobr>**             | **38.2**  | **70.6** | **59.3** | **76.0** | **79.8** | **54.9** | **68.1** |
+| <nobr>Qwen2.5-1.5B</nobr>                 | 35.1  | 63.4 | 57.1 | 69.7 | 75.7 | 54.8 | 64.1 |
+| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -42.3 | 41.4 | 35.5 | 67.5 | 66.4 | 55.0 | 53.2 |
+| *Expert Only (Baseline)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
+| **Expert: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
+| **<nobr>Qwen2.5-0.5B</nobr>**             | **53.2**  | **67.9** | **57.8** | **77.2** | **80.6** | **70.5** | **70.8** |
+| <nobr>Qwen2.5-1.5B</nobr>                 | 50.1  | 69.0 | 56.0 | 77.6 | 78.9 | 69.5 | 70.2 |
+| <nobr>Qwen2.5-Math-1.5B</nobr>            | 15.0  | 56.9 | 50.2 | 63.5 | 63.4 | 70.7 | 60.9 |
+| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -27.3 | 59.4 | 49.0 | 68.3 | 69.6 | 70.3 | 63.3 |
+| *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🚀 Quick Start
 
