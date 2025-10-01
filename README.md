@@ -7,9 +7,9 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </h1> -->
 
 <h1 align="center">
-<img src="./assets/lr_logo.png" width="100" alt="lightreasoner-logo" />
+<img src="./assets/lr_logo.png" width="150" alt="lightreasoner-logo" />
 <br>
-LightReasoner:  
+💡 LightReasoner:  
 Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
 
@@ -29,12 +29,21 @@ Can Small Language Models Teach Large Language Models Reasoning?
 
 
 
-<p align="center">
+<!-- <p align="center">
   <img src="./assets/radar_1.5B.png" width="230" />
   <img src="./assets/radar_7B.png" width="230" />
   <br>
   <img src="./assets/radar_ds1.5B.png" width="230" />
   <img src="./assets/radar_1.5Bins.png" width="230" />
+  <br>
+  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
+  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
+</p> -->
+
+<p align="center">
+  <img src="./assets/radar_1.5B.png" width="230" />
+  <img src="./assets/radar_7B.png" width="230" />
+  <img src="./assets/radar_ds1.5B.png" width="230" />
   <br>
   <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
   90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
