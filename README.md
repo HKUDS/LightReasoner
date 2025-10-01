@@ -116,7 +116,7 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 
 
 
-| **Method** | **Time** | **Probs.** | **Tokens** | **Gain** |
+| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Avg. Gain** |
 |------------|----------|------------|------------|----------|
 | **Qwen2.5-Math-1.5B** |||||
 | + SFT      | 4.0h     | 3952       | 1.77M      | +7.7%   |
@@ -131,7 +131,6 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 | + SFT      | 3.4h     | 7153       | 2.08M      | +0.1%   |
 | **+ LightR** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
-<img src="./assets/radar_1.5B.png" width="100"><br><br><img src="./assets/radar_7B.png" width="100">
 
 
 ## 🚀 Quick Start
