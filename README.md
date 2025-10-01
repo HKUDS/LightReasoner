@@ -145,6 +145,7 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 | **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
 | **<nobr>Qwen2.5-0.5B</nobr>**             | **38.2**  | **70.6** | **59.3** | **76.0** | **79.8** | **54.9** | **68.1** |
 | <nobr>Qwen2.5-1.5B</nobr>                 | 35.1  | 63.4 | 57.1 | 69.7 | 75.7 | 54.8 | 64.1 |
+| <nobr>Qwen2.5-Math-1.5B</nobr>            | /  | / | / | / | / | / | / |
 | <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -42.3 | 41.4 | 35.5 | 67.5 | 66.4 | 55.0 | 53.2 |
 | *Expert Only (Baseline)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
 | **Expert: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
@@ -155,6 +156,37 @@ This turns weaker models into effective *teaching signals*, enabling order-of-ma
 | *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
 
 
+<table>
+<tr>
+<td>
+
+<!-- Left Table -->
+  
+| **Attribute**        | **Efficiency** | **SFT** | **LightR** |
+|-----------------------|----------------|---------|------------|
+| Full trajectories     | ⬇️          | ✅      | ❌         |
+| All-token tuning      | ⬇️          | ✅      | ❌         |
+| GT verification       | ⬇️          | ✅      | ❌         |
+| Prefix termination    | ⬆️          | ❌      | ✅         |
+| Selective tokens      | ⬆️          | ❌      | ✅         |
+| Verification-free     | ⬆️          | ❌      | ✅         |
+
+</td>
+<td>
+
+<!-- Right Table -->
+
+| **Attribute**         | **Practicality** | **CD**      | **LightR** |
+|------------------------|------------------|-------------|------------|
+| Contrast usage         | /                | Inference   | Training   |
+| Size-based contrast    | ⬇️            | ✅          | ❌         |
+| Expertise contrast     | ⬆️            | ❌          | ✅         |
+| Persistent benefits    | ⬆️            | ❌          | ✅         |
+| Independent inference  | ⬆️            | ❌          | ✅         |
+
+</td>
+</tr>
+</table>
 
 
 
