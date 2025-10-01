@@ -1,17 +1,16 @@
-<!-- <h1 align="center">
-<img src="./docs/static/images/lightreasoner_logo.png" width="100" alt="lightreasoner-logo" />
-<br>
-LightReasoner: 
-
-Can Small Language Models Teach Large Language Models Reasoning?
-</h1> -->
-
 <h1 align="center">
-<img src="./assets/lr_logo.png" width="150" alt="lightreasoner-logo" />
+<img src="./assets/lr_logo2.png" width="120" alt="lightreasoner-logo" />
 <br>
 💡 LightReasoner:  
 Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
+
+<h3 align="center">
+<a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank">Jingyuan Wang</a> ·
+<a href="https://scholar.google.com/citations?user=k6yAt6IAAAAJ&hl=en&oi=sra" target="_blank">Yankai Chen</a> ·
+<a href="https://scholar.google.com/citations?user=__9uvQkAAAAJ&hl=en" target="_blank">Zhonghang Li</a> ·
+<a href="https://scholar.google.com/citations?user=Zkv9FqwAAAAJ&hl=en" target="_blank">Chao Huang</a>
+</h3>
 
 
 <div align="center">
