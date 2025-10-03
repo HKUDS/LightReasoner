@@ -1,3 +1,4 @@
+<!-- Icon and title -->
 <h1 align="center">
 <img src="./assets/lr_logo2.png" width="120" alt="lightreasoner-logo" />
 <br>
@@ -5,6 +6,8 @@
 Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
 
+
+<!-- Authors -->
 <h3 align="center">
 <a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank">Jingyuan Wang</a> ·
 <a href="https://scholar.google.com/citations?user=k6yAt6IAAAAJ&hl=en&oi=sra" target="_blank">Yankai Chen</a> ·
@@ -13,6 +16,7 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </h3>
 
 
+<!-- Quick links -->
 <div align="center">
 
 ![](https://img.shields.io/badge/Status-Under%20Review%20(ICLR%202026)-red)
@@ -27,17 +31,6 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </p>
 
 
-
-<!-- <p align="center">
-  <img src="./assets/radar_1.5B.png" width="230" />
-  <img src="./assets/radar_7B.png" width="230" />
-  <br>
-  <img src="./assets/radar_ds1.5B.png" width="230" />
-  <img src="./assets/radar_1.5Bins.png" width="230" />
-  <br>
-  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
-  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
-</p> -->
 
 <p align="center">
   <img src="./assets/lr_bars.png" width="800" />
@@ -54,6 +47,17 @@ Can Small Language Models Teach Large Language Models Reasoning?
 
 - [2025/09] LightReasoner paper submitted to **ICLR 2026**.  
 - [2025/08] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
+
+
+
+## ⚡ TL;DR
+**LightReasoner** is a lightweight and efficient learning framework that turns weaker language models into effective teaching signals for stronger models.
+
+
+
+## 📄 Abstract
+Large language models (LLMs) have demonstrated remarkable progress in reasoning, often through supervised fine-tuning (SFT). However, SFT is resource-intensive, relying on large curated datasets, rejection-sampled demonstrations, and uniform optimization across all tokens—even though only a fraction carry meaningful learning value. In this work, we explore a counterintuitive idea: can smaller language models teach larger language models by revealing high-value reasoning moments that reflect the latter's unique strength? We propose **LightReasoner**, a novel framework that leverages the behavioral divergence between a stronger *expert* model and a weaker *amateur* model. LightReasoner operates in two stages: (1) a *sampling stage* that pinpoints critical reasoning moments and constructs supervision examples capturing the expert's advantage through expert–amateur contrast, and (2) a fine-tuning stage that aligns the expert model with these distilled examples, amplifying its reasoning strengths. Across seven mathematical benchmarks, LightReasoner improves accuracy by up to 28.1%, while reducing time consumption by 90%, sampled problems by 80%, and tuned token usage by 99%, all without relying on ground-truth labels. By turning weaker SLMs into effective teaching signals, LightReasoner offers a scalable and resource-efficient approach for advancing LLM reasoning.
+
 
 
 
