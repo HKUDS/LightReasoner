@@ -61,22 +61,16 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 
 
-## 💡 Introduction
-
-**LightReasoner** is a self-supervised framework that enhances reasoning in LLMs by contrasting them against smaller, weaker models.  
-Instead of treating all tokens equally, LightReasoner focuses only on *informative reasoning steps* identified via **Expert–Amateur KL divergence**.
+## 🧩 LightReasoner Framework
 
 <p align="center">
   <img src="./assets/lr_new.png" width="800" />
   <br>
-  <em>Figure 2: Overview of the LightReasoner framework. Informative step selection and contrastive supervision
-  transform Expert–Amateur divergence into efficient reasoning signals.</em>
+  <em>
+    <strong>Figure 2: Overview of the LightReasoner framework.</strong> (1) Sampling Stage: Expert and Amateur models generate distributions π<sub>E</sub> and π<sub>A</sub>. Informative step selection retains steps with D<sub>KL</sub>(π<sub>E</sub> ∥ π<sub>A</sub>) > β, and contrastive supervision constructs soft labels v<sub>C</sub> capturing the Expert's advantage through Expert–Amateur contrast. (2) Fine-tuning Stage: The Expert model is enhanced by minimizing the KL divergence between its output and v<sub>C</sub>.
+  </em>
 </p>
 
-- **Stage 1 — Sampling:** Expert and Amateur models generate predictions under the same prefixes. Steps with high divergence are retained as critical reasoning points.  
-- **Stage 2 — Fine-tuning:** Contrastive soft labels encode the Expert’s advantage. The Expert is then fine-tuned with LoRA to reinforce its strengths.
-
-This turns weaker models into effective *teaching signals*, enabling order-of-magnitude efficiency gains without relying on ground-truth labels.
 
 
 
