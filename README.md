@@ -45,8 +45,7 @@ Can Small Language Models Teach Large Language Models Reasoning?
 
 ## 🔥 News
 
-- [2025/09] LightReasoner paper submitted to **ICLR 2026**.  
-- [2025/08] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
+- [2025/09] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
 
 
 
