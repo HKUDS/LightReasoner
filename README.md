@@ -25,7 +25,6 @@ Can Small Language Models Teach Large Language Models Reasoning?
 
 <p align="center">
   <a href="./9130_LightReasoner_Can_Small_L.pdf"><b>[📜 Paper]</b></a> •
-  <a href="https://anonymous.4open.science/r/LightReasoner"><b>[🐱 Anonymous Repo]</b></a> •
   <a href="https://github.com/QwenLM/Qwen2.5-Math"><b>[🔗 Baselines]</b></a>
 </p>
 
