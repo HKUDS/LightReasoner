@@ -19,7 +19,6 @@ Can Small Language Models Teach Large Language Models Reasoning?
 <!-- Quick links -->
 <div align="center">
 
-![](https://img.shields.io/badge/Status-Under%20Review%20(ICLR%202026)-red)
 ![](https://img.shields.io/badge/Code%20License-MIT-green)
 
 </div>
