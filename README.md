@@ -1,6 +1,6 @@
 <!-- Icon and title -->
 <h1 align="center">
-<img src="./assets/lr_logo2.png" width="80" alt="lightreasoner-logo" />
+<img src="./assets/lr_logo2.png" width="100" alt="lightreasoner-logo" />
 <br>
 💡 LightReasoner:  
 Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em></strong> Language Models Reasoning?
@@ -44,7 +44,8 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 ## 🎉 News
 
-- [2025/10] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
+- [x] [2025/10/12] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines. 
+
 
 
 ## ⚡ TL;DR
@@ -52,7 +53,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 
 ## 📄 Abstract
-Large language models (LLMs) have demonstrated remarkable progress in reasoning, often through supervised fine-tuning (SFT). However, SFT is resource-intensive, relying on large curated datasets, rejection-sampled demonstrations, and uniform optimization across all tokens—even though only a fraction carry meaningful learning value. In this work, we explore a counterintuitive idea: can smaller language models teach larger language models by revealing high-value reasoning moments that reflect the latter's unique strength? We propose **LightReasoner**, a novel framework that leverages the behavioral divergence between a stronger *expert* model and a weaker *amateur* model. LightReasoner operates in two stages: (1) a *sampling stage* that pinpoints critical reasoning moments and constructs supervision examples capturing the expert's advantage through expert–amateur contrast, and (2) a *fine-tuning stage* that aligns the expert model with these distilled examples, amplifying its reasoning strengths. Across 7 mathematical benchmarks, LightReasoner improves accuracy by up to 28.1%, while reducing time consumption by 90%, sampled problems by 80%, and tuned token usage by 99%, all without relying on ground-truth labels. By turning weaker SLMs into effective teaching signals, LightReasoner offers a scalable and resource-efficient approach for advancing LLM reasoning.
+Large language models (LLMs) have demonstrated remarkable progress in reasoning, often through supervised fine-tuning (SFT). However, SFT is resource-intensive, relying on large curated datasets, rejection-sampled demonstrations, and uniform optimization across all tokens—even though only a fraction carry meaningful learning value. In this work, we explore a counterintuitive idea: can smaller language models teach larger language models by revealing high-value reasoning moments that reflect the latter's unique strength? We propose *LightReasoner*, a novel framework that leverages the behavioral divergence between a stronger *expert* model and a weaker *amateur* model. LightReasoner operates in two stages: (1) a *sampling stage* that pinpoints critical reasoning moments and constructs supervision examples capturing the expert's advantage through expert–amateur contrast, and (2) a *fine-tuning stage* that aligns the expert model with these distilled examples, amplifying its reasoning strengths. Across 7 mathematical benchmarks, LightReasoner improves accuracy by up to 28.1%, while reducing time consumption by 90%, sampled problems by 80%, and tuned token usage by 99%, all without relying on ground-truth labels. By turning weaker SLMs into effective teaching signals, LightReasoner offers a scalable and resource-efficient approach for advancing LLM reasoning.
 
 
 
@@ -66,9 +67,6 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
     <strong>Figure 2: Overview of the LightReasoner framework.</strong> (1) Sampling Stage: Expert and Amateur models generate distributions π<sub>E</sub> and π<sub>A</sub>. Informative step selection retains steps with D<sub>KL</sub>(π<sub>E</sub> ∥ π<sub>A</sub>) > β, and contrastive supervision constructs soft labels v<sub>C</sub> capturing the Expert's advantage through Expert–Amateur contrast. (2) Fine-tuning Stage: The Expert model is enhanced by minimizing the KL divergence between its output and v<sub>C</sub>.
   </em>
 </p>
-
-
-
 
 
 
@@ -101,10 +99,15 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 
 
-- **+28.1%** on GSM8K, **+25.1%** on MATH with Qwen2.5-Math-1.5B.  
-- **+10.4%** on GSM8K, **+6.0%** on MATH with Qwen2.5-Math-7B.  
-- Consistent gains across GSM8K, MATH, SVAMP, ASDiv, Minerva Math, OlympiadBench, and MMLU STEM.  
-- Efficiency: **90% less time**, **80% fewer problems**, **99% fewer tokens**.  
+- **+28.1%** on GSM8K, **+25.1%** on MATH, **+7.2%** on SVAMP, **+11.7%** on ASDIV for Qwen2.5-Math-1.5B.  
+
+- **+4.3%** on GSM8K, **+6.0%** on MATH, **+17.4%** on OlympiadBench for DeepSeek-R1-Distill-Qwen-1.5B. 
+
+- **+10.4%** on GSM8K, **+6.0%** on MATH, **+9.3%** on SVAMP, **+7.9%** on ASDIV for Qwen2.5-Math-7B.  
+
+- Trained *solely* on GSM8K, LightReasoner generalizes effectively for 5 baseline models, achieving consistent gains across 7 benchmarks.
+
+- Efficiency: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
 
 
 ## ⏱️ Efficiency Study
