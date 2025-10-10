@@ -8,7 +8,7 @@ Can Small Language Models Teach Large Language Models Reasoning?
 
 
 <p align="center">
-  <img src="./assets/welcome.png" width="600" alt="Welcome banner"/>
+  <img src="./assets/welcome.png" width="500" alt="Welcome banner"/>
 </p>
 
 
