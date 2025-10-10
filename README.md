@@ -7,13 +7,6 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 </h1>
 
 
-
-<p align="center" style="margin-bottom:-30px;">
-  <img src="./assets/welcome.png" width="500" alt="Welcome banner"/>
-</p>
-
-
-
 <!-- Authors -->
 <h3 align="center">
 <a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank">Jingyuan Wang</a> ·
@@ -21,6 +14,11 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <a href="https://scholar.google.com/citations?user=__9uvQkAAAAJ&hl=en" target="_blank">Zhonghang Li</a> ·
 <a href="https://scholar.google.com/citations?user=Zkv9FqwAAAAJ&hl=en" target="_blank">Chao Huang</a>
 </h3>
+
+
+<p align="center">
+  <img src="./assets/welcome.png" width="500" alt="Welcome banner"/>
+</p>
 
 
 <!-- Quick links -->
@@ -111,19 +109,19 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 ## ⏱️ Efficiency Study
 
-| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Avg. Gain** |
+| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Average Gain** |
 |------------|----------|------------|------------|----------|
 | **Qwen2.5-Math-1.5B** |||||
-| + SFT (RFT)      | 4.0h     | 3952       | 1.77M      | +7.7%   |
+| + SFT (rejection sampled)      | 4.0h     | 3952       | 1.77M      | +7.7%   |
 | **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
 | **Qwen2.5-Math-7B** |||||
-| + SFT (RFT)      | 9.5h     | 6029       | 2.20M      | +4.5%   |
+| + SFT (rejection sampled)      | 9.5h     | 6029       | 2.20M      | +4.5%   |
 | **+ LightReasoner** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
 | **DeepSeek-R1-Distill-Qwen-1.5B** |||||
-| + SFT (RFT)     | 3.6h     | 6023       | 5.95M      | +3.0%   |
+| + SFT (rejection sampled)     | 3.6h     | 6023       | 5.95M      | +3.0%   |
 | **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
 | **Qwen2.5-Math-1.5B-Instruct** |||||
-| + SFT (RFT)     | 3.4h     | 7153       | 2.08M      | +0.1%   |
+| + SFT (rejection sampled)     | 3.4h     | 7153       | 2.08M      | +0.1%   |
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
 <p align="center">
@@ -132,7 +130,7 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
   <img src="./assets/radar_ds1.5B.png" width="200" />
   <img src="./assets/radar_1.5Bins.png" width="200" />
   <br>
-  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
+  <em>Figure 3: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
   90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
 </p>
 
@@ -155,12 +153,14 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 | *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
 
 
+
+
+
+### 🏆 Comparison with Competing Methods
+
 <table>
 <tr>
 <td>
-
-
-### 🏆 Comparison at a Glance with Competing Methods
 
 <!-- Left Table -->
   
@@ -233,11 +233,14 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 If you find this work useful, please cite our paper:
 
 ```
-@inproceedings{lightreasoner2026,
-  title={LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?},
-  author={Anonymous},
-  booktitle={International Conference on Learning Representations (ICLR)},
-  year={2026}
+@misc{wang2025lightreasonersmalllanguagemodels,
+      title={LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?}, 
+      author={Jingyuan Wang and Yankai Chen and Zhonghang Li and Chao Huang},
+      year={2025},
+      eprint={2510.07962},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2510.07962}, 
 }
 ```
 
