@@ -1,16 +1,10 @@
 <!-- Icon and title -->
 <h1 align="center">
 <img src="./assets/lr_logo2.png" width="80" alt="lightreasoner-logo" />
-<!-- <br>
+<br>
 💡 LightReasoner:  
-Can Small Language Models Teach Large Language Models Reasoning?
-</h1> -->
-
-<h1 align="center">
-💡 <strong><span style="color:#A882FF;">Light</span>Reasoner:</strong><br>
-Can <span style="color:#5CC9F5;">Small</span> Language Models Teach <span style="color:#F5A623;">Large</span> Language Models Reasoning?
+Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em></strong> Language Models Reasoning?
 </h1>
-
 
 
 
