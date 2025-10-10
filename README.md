@@ -24,14 +24,14 @@ Can Small Language Models Teach Large Language Models Reasoning?
 <!-- Quick links -->
 <div align="center">
 
-![](https://img.shields.io/badge/Code%20License-MIT-green)
+[![arXiv](https://img.shields.io/badge/arXiv-2510.07962-b31b1b.svg)](https://arxiv.org/abs/2510.07962)
+[![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
+![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
+![](https://img.shields.io/badge/PyTorch-2.1+-ee4c2c.svg)
 
 </div>
 
-<p align="center">
-  <a href="./9130_LightReasoner_Can_Small_L.pdf"><b>[📜 Paper]</b></a> •
-  <a href="https://github.com/QwenLM/Qwen2.5-Math"><b>[🔗 Baselines]</b></a>
-</p>
 
 
 
