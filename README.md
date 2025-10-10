@@ -40,11 +40,11 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
   <img src="./assets/lr_bars.png" width="800" />
   <br>
   <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
-  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
+  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT under same settings.</em>
 </p>
 
 
-## 🔥 News
+## 🎉 News
 
 - [2025/10] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
 
@@ -103,12 +103,13 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 
 
-- **+28.1%** improvement on GSM8K with Qwen2.5-Math-1.5B.  
-- **+25.1%** improvement on MATH with Qwen2.5-Math-1.5B.  
+- **+28.1%** on GSM8K, **+25.1%** on MATH with Qwen2.5-Math-1.5B.  
+- **+10.4%** on GSM8K, **+6.0%** on MATH with Qwen2.5-Math-7B.  
 - Consistent gains across GSM8K, MATH, SVAMP, ASDiv, Minerva Math, OlympiadBench, and MMLU STEM.  
 - Efficiency: **90% less time**, **80% fewer problems**, **99% fewer tokens**.  
 
 
+## ⏱️ Efficiency Study
 
 | **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Avg. Gain** |
 |------------|----------|------------|------------|----------|
@@ -136,6 +137,8 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 </p>
 
 
+## 🧠 Impact of Contrast
+
 | **Amateur Model** | **Perf. Gap** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **AVG.** |
 |-------------------|-------------|-----------|----------|-----------|-----------|---------------|----------|
 | **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
@@ -155,6 +158,9 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 <table>
 <tr>
 <td>
+
+
+### 🏆 Comparison at a Glance with Competing Methods
 
 <!-- Left Table -->
   
