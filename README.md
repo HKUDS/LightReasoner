@@ -7,6 +7,13 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
 
 
+<p align="center">
+  ✨ <strong><span style="color:#A882FF; font-size:22px;">Welcome to LightReasoner</span></strong> ✨<br>
+  <em><span style="color:#C4A3FF; font-size:16px;">Turning smaller models into teachers for larger ones.</span></em>
+</p>
+
+
+
 <!-- Authors -->
 <h3 align="center">
 <a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank">Jingyuan Wang</a> ·
