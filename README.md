@@ -7,9 +7,11 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </h1>
 
 
-<p align="center">
+
+<p align="center" style="margin-bottom:-20px;">
   <img src="./assets/welcome.png" width="500" alt="Welcome banner"/>
 </p>
+
 
 
 <!-- Authors -->
@@ -29,10 +31,9 @@ Can Small Language Models Teach Large Language Models Reasoning?
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
 ![](https://img.shields.io/badge/PyTorch-2.1+-ee4c2c.svg)
+[![🤗 Models](https://img.shields.io/badge/🤗_Models-Coming_Soon-ffcc4d.svg)](https://huggingface.co/)
 
 </div>
-
-
 
 
 <p align="center">
@@ -43,18 +44,13 @@ Can Small Language Models Teach Large Language Models Reasoning?
 </p>
 
 
-
-
-
 ## 🔥 News
 
 - [2025/09] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines.  
 
 
-
 ## ⚡ TL;DR
-**LightReasoner** is a lightweight and efficient learning framework that turns weaker language models into effective teaching signals for stronger models.
-
+**LightReasoner** is a lightweight and resource-efficient learning framework that turns weaker language models into effective teaching signals for reinforcing stronger models.
 
 
 ## 📄 Abstract
