@@ -78,7 +78,7 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 ## 🚀 Quick Start
 
 *LightReasoner* is incredibly *easy* to use. We’ve designed it to be accessible — so anyone can try it out and experience its “counterintuitive effectiveness” firsthand.
-No sweat — you’ll have it set up and running with your model of choice in just a few simple steps below! 🪄
+No sweat — you’ll have it set up and running with your model of choice in just a few 🪄 simple steps below!
 
 
 ### 📦 Get Ready
@@ -305,7 +305,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 
 
-## 🔍 More insights
+## 🔍 More Insights
 
 <p align="center">
   <img src="./assets/gap_vs_perf.png" alt="Sampling Stage" width="55.5%"/>
