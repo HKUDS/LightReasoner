@@ -52,7 +52,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 **LightReasoner** is a lightweight and resource-efficient learning framework that turns weaker language models into effective teaching signals for reinforcing stronger models.
 
 
-## 📄 Abstract
+## 📝 Abstract
 Large language models (LLMs) have demonstrated remarkable progress in reasoning, often through supervised fine-tuning (SFT). However, SFT is resource-intensive, relying on large curated datasets, rejection-sampled demonstrations, and uniform optimization across all tokens—even though only a fraction carry meaningful learning value. In this work, we explore a counterintuitive idea: can smaller language models teach larger language models by revealing high-value reasoning moments that reflect the latter's unique strength? We propose *LightReasoner*, a novel framework that leverages the behavioral divergence between a stronger *expert* model and a weaker *amateur* model. LightReasoner operates in two stages: (1) a *sampling stage* that pinpoints critical reasoning moments and constructs supervision examples capturing the expert's advantage through expert–amateur contrast, and (2) a *fine-tuning stage* that aligns the expert model with these distilled examples, amplifying its reasoning strengths. Across 7 mathematical benchmarks, LightReasoner improves accuracy by up to 28.1%, while reducing time consumption by 90%, sampled problems by 80%, and tuned token usage by 99%, all without relying on ground-truth labels. By turning weaker SLMs into effective teaching signals, LightReasoner offers a scalable and resource-efficient approach for advancing LLM reasoning.
 
 
@@ -107,11 +107,11 @@ Finally, prepare the training data:
 python data_prep.py
 ```
 
-⚠️ Caveat
+#### ⚠️ Caveat
 
-We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation. This ensures that the Amateur, despite lacking math-specific training, can still produce interpretable outputs suitable for contrastive supervision.
+- We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation. This ensures that the Amateur, despite lacking math-specific training, can still produce interpretable outputs suitable for contrastive supervision.
 
-You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
+- You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
 
 
 
@@ -121,7 +121,7 @@ You’re *absolutely* free to try other datasets — LightReasoner is fully adap
 python LightR_sampling.py --max_questions 1000
 ```
 
-⚠️ Caveat
+#### ⚠️ Caveat
 
 Before running the script, you should:
 
@@ -136,7 +136,25 @@ Before running the script, you should:
 
 This step launches the full LightReasoner fine-tuning pipeline — combining *dataset loading*, *LoRA configuration*, and *contrastive KLD training* into a unified workflow.
 
-⚠️ Caveat
+
+#### 💻 Run Options
+
+**Foreground (simple run):**
+```bash
+python LightR_finetuning.py
+```
+
+**Background (recommended for long training):**
+```bash
+nohup python LightR_finetuning.py > finetune.log 2>&1 &
+```
+
+**Monitor progress:**
+```bash
+tail -f finetune.log
+```
+
+#### ⚠️ Caveat
 
 Before running the script, edit the **config section** to match your setup:
 
@@ -151,25 +169,20 @@ Before running the script, edit the **config section** to match your setup:
 
 
 
-
-
-
-
-
-
-
-
-
-
 ### Merging
 ```bash
 python merge.py
 ```
 
-### Evaluation
-```bash
-python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math svamp
-```
+
+
+
+### 📈 Evaluation
+
+All evaluations are performed using the **official Qwen2.5-Math toolkit**.  
+
+Please refer to the [`evaluation`](./evaluation) folder for detailed usage and setup instructions.
+
 
 
 
