@@ -71,137 +71,6 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 
 
-## 📊 Main Results
-
-| Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
-|-----------------------------------------------|-------|------|-------|-------|-------------------|---------------|----------------|------|
-| **<nobr>Qwen2.5-Math-1.5B</nobr>**            |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 42.5  | 34.2 | 68.8  | 68.1  | 9.9               | 23.7          | 49.8           | 42.4 |
-| + SFT                                         | 69.2  | 57.1 | 64.1  | 70.2  | **15.1**          | **27.6**      | 47.7           | 50.1 |
-| + LightR                                      | **70.6** | **59.3** | **76.0** | **79.8** | 11.4 | 27.1 | **54.9** | **54.2** |
-| **<nobr>Qwen2.5-Math-1.5B-Instruct</nobr>**   |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 84.8  | 75.8 | 94.2  | 94.7  | 29.4              | 37.5          | 57.4           | 67.7 |
-| + SFT                                         | 85.4  | 75.8 | 93.5  | 94.7  | 31.6              | 37.5          | 56.2           | 67.8 |
-| + LightR                                      | **86.7** | 75.5 | 93.0 | 94.1 | **32.0** | **37.8** | 55.2 | **67.8** |
-| **<nobr>DeepSeek-R1-Distill-Qwen-1.5B</nobr>**|       |      |       |       |                   |               |                |      |
-| Baseline                                      | 75.2  | 54.2 | 79.9  | 84.9  | 16.2              | 19.1          | 22.3           | 50.3 |
-| + SFT                                         | 78.2  | **60.3** | 81.5 | 87.4 | **18.4** | 21.2 | 26.2 | 53.3 |
-| + LightR                                      | **79.5** | 60.2 | **83.5** | **87.5** | 18.0 | **36.5** | **26.2** | **55.9** |
-| **<nobr>Qwen2.5-Math-7B</nobr>**              |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 57.5  | 51.8 | 67.9  | 72.7  | 14.0              | 16.0          | 69.8           | 50.0 |
-| + SFT                                         | 64.4  | **63.3** | 76.2 | 76.6 | 12.1 | **20.5** | 68.5 | 54.5 |
-| + LightR                                      | **67.9** | 57.8 | **77.2** | **80.6** | 12.1 | 16.9 | **70.5** | **54.7** |
-| **<nobr>Qwen2.5-Math-7B-Instruct</nobr>**     |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 95.2  | 83.2 | 93.9  | 95.3  | 33.8              | 41.5          | 69.3           | 73.2 |
-| + SFT                                         | 95.4  | 83.1 | **94.1** | 95.2 | **38.2** | 40.7 | 68.2 | **73.6** |
-| + LightR                                      | **95.8** | **83.6** | 93.1 | 95.2 | 34.2 | 39.0 | 67.8 | 72.7 |
-
-
-
-
-- **+28.1%** on GSM8K, **+25.1%** on MATH, **+7.2%** on SVAMP, **+11.7%** on ASDIV for Qwen2.5-Math-1.5B.  
-
-- **+4.3%** on GSM8K, **+6.0%** on MATH, **+17.4%** on OlympiadBench for DeepSeek-R1-Distill-Qwen-1.5B. 
-
-- **+10.4%** on GSM8K, **+6.0%** on MATH, **+9.3%** on SVAMP, **+7.9%** on ASDIV for Qwen2.5-Math-7B.  
-
-- Trained *solely* on GSM8K, LightReasoner generalizes effectively for 5 baseline models, achieving consistent gains across 7 benchmarks.
-
-- Efficiency: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
-
-
-## ⏱️ Efficiency Study
-
-| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Average Gain** |
-|------------|----------|------------|------------|----------|
-| **Qwen2.5-Math-1.5B** |||||
-| + SFT (rejection sampled)      | 4.0h     | 3952       | 1.77M      | +7.7%   |
-| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
-| **Qwen2.5-Math-7B** |||||
-| + SFT (rejection sampled)      | 9.5h     | 6029       | 2.20M      | +4.5%   |
-| **+ LightReasoner** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
-| **DeepSeek-R1-Distill-Qwen-1.5B** |||||
-| + SFT (rejection sampled)     | 3.6h     | 6023       | 5.95M      | +3.0%   |
-| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
-| **Qwen2.5-Math-1.5B-Instruct** |||||
-| + SFT (rejection sampled)     | 3.4h     | 7153       | 2.08M      | +0.1%   |
-| **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
-
-<p align="center">
-  <img src="./assets/radar_1.5B.png" width="200" />
-  <img src="./assets/radar_7B.png" width="200" />
-  <img src="./assets/radar_ds1.5B.png" width="200" />
-  <img src="./assets/radar_1.5Bins.png" width="200" />
-  <br>
-  <em>Figure 3: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
-  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT.</em>
-</p>
-
-
-## 🧠 Impact of Contrast
-
-| **Amateur Model** | **Perf. Gap** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **AVG.** |
-|-------------------|-------------|-----------|----------|-----------|-----------|---------------|----------|
-| **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
-| **<nobr>Qwen2.5-0.5B</nobr>**             | **38.2**  | **70.6** | **59.3** | **76.0** | **79.8** | **54.9** | **68.1** |
-| <nobr>Qwen2.5-1.5B</nobr>                 | 35.1  | 63.4 | 57.1 | 69.7 | 75.7 | 54.8 | 64.1 |
-| <nobr>Qwen2.5-Math-1.5B</nobr>            | /  | / | / | / | / | / | / |
-| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -42.3 | 41.4 | 35.5 | 67.5 | 66.4 | 55.0 | 53.2 |
-| *Expert Only (Baseline)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
-| **Expert: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
-| **<nobr>Qwen2.5-0.5B</nobr>**             | **53.2**  | **67.9** | **57.8** | **77.2** | **80.6** | **70.5** | **70.8** |
-| <nobr>Qwen2.5-1.5B</nobr>                 | 50.1  | 69.0 | 56.0 | 77.6 | 78.9 | 69.5 | 70.2 |
-| <nobr>Qwen2.5-Math-1.5B</nobr>            | 15.0  | 56.9 | 50.2 | 63.5 | 63.4 | 70.7 | 60.9 |
-| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -27.3 | 59.4 | 49.0 | 68.3 | 69.6 | 70.3 | 63.3 |
-| *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
-
-
-
-
-
-### 🏆 Comparison with Competing Methods
-
-<table>
-<tr>
-<td>
-
-<!-- Left Table -->
-  
-| **Attribute**        | **Time** | **SFT** | **LightR** |
-|-----------------------|----------------|---------|------------|
-| Full trajectories     | ⬆️          | ✅      | ❌         |
-| All-token tuning      | ⬆️          | ✅      | ❌         |
-| Prefix termination    | ⬇️          | ❌      | ✅         |
-| Selective tokens      | ⬇️          | ❌      | ✅         |
-| Verification-free     | ⬇️          | ❌      | ✅         |
-
-</td>
-<td>
-
-<!-- Right Table -->
-
-| **Attribute**         | **Utility** | **CD**      | **LightR** |
-|------------------------|------------------|-------------|------------|
-| Contrast usage         | /                | Inference   | Training   |
-| Size-based contrast    | ⬇️            | ✅          | ❌         |
-| Expertise contrast     | ⬆️            | ❌          | ✅         |
-| Persistent benefits    | ⬆️            | ❌          | ✅         |
-| Independent inference  | ⬆️            | ❌          | ✅         |
-
-</td>
-</tr>
-</table>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -231,6 +100,145 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 ```
 
 
+
+
+
+## 📊 Main Results
+
+| Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
+|-----------------------------------------------|-------|------|-------|-------|-------------------|---------------|----------------|------|
+| **<nobr>Qwen2.5-Math-1.5B</nobr>**            |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 42.5  | 34.2 | 68.8  | 68.1  | 9.9               | 23.7          | 49.8           | 42.4 |
+| + SFT                                         | 69.2  | 57.1 | 64.1  | 70.2  | **15.1**          | **27.6**      | 47.7           | 50.1 |
+| + LightR                                      | **70.6** | **59.3** | **76.0** | **79.8** | 11.4 | 27.1 | **54.9** | **54.2** |
+| **<nobr>Qwen2.5-Math-1.5B-Instruct</nobr>**   |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 84.8  | 75.8 | 94.2  | 94.7  | 29.4              | 37.5          | 57.4           | 67.7 |
+| + SFT                                         | 85.4  | 75.8 | 93.5  | 94.7  | 31.6              | 37.5          | 56.2           | 67.8 |
+| + LightR                                      | **86.7** | 75.5 | 93.0 | 94.1 | **32.0** | **37.8** | 55.2 | **67.8** |
+| **<nobr>DeepSeek-R1-Distill-Qwen-1.5B</nobr>**|       |      |       |       |                   |               |                |      |
+| Baseline                                      | 75.2  | 54.2 | 79.9  | 84.9  | 16.2              | 19.1          | 22.3           | 50.3 |
+| + SFT                                         | 78.2  | **60.3** | 81.5 | 87.4 | **18.4** | 21.2 | 26.2 | 53.3 |
+| + LightR                                      | **79.5** | 60.2 | **83.5** | **87.5** | 18.0 | **36.5** | **26.2** | **55.9** |
+| **<nobr>Qwen2.5-Math-7B</nobr>**              |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 57.5  | 51.8 | 67.9  | 72.7  | 14.0              | 16.0          | 69.8           | 50.0 |
+| + SFT                                         | 64.4  | **63.3** | 76.2 | 76.6 | 12.1 | **20.5** | 68.5 | 54.5 |
+| + LightR                                      | **67.9** | 57.8 | **77.2** | **80.6** | 12.1 | 16.9 | **70.5** | **54.7** |
+| **<nobr>Qwen2.5-Math-7B-Instruct</nobr>**     |       |      |       |       |                   |               |                |      |
+| Baseline                                      | 95.2  | 83.2 | 93.9  | 95.3  | 33.8              | 41.5          | 69.3           | 73.2 |
+| + SFT                                         | 95.4  | 83.1 | **94.1** | 95.2 | **38.2** | 40.7 | 68.2 | **73.6** |
+| + LightR                                      | **95.8** | **83.6** | 93.1 | 95.2 | 34.2 | 39.0 | 67.8 | 72.7 |
+
+
+- Trained *solely* on GSM8K, LightReasoner generalizes effectively for 5 baseline models, achieving consistent gains across 7 benchmarks.
+
+- **+28.1%** on GSM8K, **+25.1%** on MATH, **+7.2%** on SVAMP, **+11.7%** on ASDIV for Qwen2.5-Math-1.5B.  
+
+- **+4.3%** on GSM8K, **+6.0%** on MATH, **+17.4%** on OlympiadBench for DeepSeek-R1-Distill-Qwen-1.5B. 
+
+- **+10.4%** on GSM8K, **+6.0%** on MATH, **+9.3%** on SVAMP, **+7.9%** on ASDIV for Qwen2.5-Math-7B.  
+
+- Efficiency vs. SFT: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
+
+
+
+
+## ⏱️ Efficiency Study
+
+| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Average Gain** |
+|------------|----------|------------|------------|----------|
+| **Qwen2.5-Math-1.5B** |||||
+| + SFT      | 4.0h     | 3952       | 1.77M      | +7.7%   |
+| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+11.8%** |
+| **Qwen2.5-Math-7B** |||||
+| + SFT      | 9.5h     | 6029       | 2.20M      | +4.5%   |
+| **+ LightReasoner** | **0.75h** | **1000** | **0.02M**  | **+4.7%** |
+| **DeepSeek-R1-Distill-Qwen-1.5B** |||||
+| + SFT     | 3.6h     | 6023       | 5.95M      | +3.0%   |
+| **+ LightReasoner** | **0.5h** | **1000**  | **0.02M**  | **+5.6%** |
+| **Qwen2.5-Math-1.5B-Instruct** |||||
+| + SFT     | 3.4h     | 7153       | 2.08M      | +0.1%   |
+| **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
+
+<p align="center">
+  <img src="./assets/radar_1.5B.png" width="200" />
+  <img src="./assets/radar_7B.png" width="200" />
+  <img src="./assets/radar_ds1.5B.png" width="200" />
+  <img src="./assets/radar_1.5Bins.png" width="200" />
+  <br>
+  <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
+</p>
+
+- **SFT:**  
+  1. Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
+  
+  2. For fair comparison, SFT uses the *same* experimental setup as LightReasoner — LoRA fine-tuning trained **only on the GSM8K training set**.
+
+- **Efficiency Evaluation:**  
+  1. **Time Budget** — Sampling plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
+  
+  2. **Training Instances** — Number of distinct training set problemsused to generate the supervision dataset.  
+  
+  3. **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains only on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
+
+
+
+## 🧠 Expertise-Driven Contrast
+
+| **Amateur Model** | **Perf. Gap** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **AVG.** |
+|-------------------|-------------|-----------|----------|-----------|-----------|---------------|----------|
+| **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
+| **<nobr>Qwen2.5-0.5B</nobr>**             | **38.2**  | **70.6** | **59.3** | **76.0** | **79.8** | **54.9** | **68.1** |
+| <nobr>Qwen2.5-1.5B</nobr>                 | 35.1  | 63.4 | 57.1 | 69.7 | 75.7 | 54.8 | 64.1 |
+| <nobr>Qwen2.5-Math-1.5B</nobr>            | /  | / | / | / | / | / | / |
+| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -42.3 | 41.4 | 35.5 | 67.5 | 66.4 | 55.0 | 53.2 |
+| *Expert Only (Baseline)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
+| **Expert: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
+| **<nobr>Qwen2.5-0.5B</nobr>**             | **53.2**  | **67.9** | **57.8** | **77.2** | **80.6** | **70.5** | **70.8** |
+| <nobr>Qwen2.5-1.5B</nobr>                 | 50.1  | 69.0 | 56.0 | 77.6 | 78.9 | 69.5 | 70.2 |
+| <nobr>Qwen2.5-Math-1.5B</nobr>            | 15.0  | 56.9 | 50.2 | 63.5 | 63.4 | 70.7 | 60.9 |
+| <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -27.3 | 59.4 | 49.0 | 68.3 | 69.6 | 70.3 | 63.3 |
+| *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
+
+
+## 🔍 More insights
+
+
+## 🏆 Comparison with Competing Methods
+
+<table>
+<tr>
+<td>
+
+<!-- Left Table -->
+  
+| **Attribute**        | **Time** | **SFT** | **LightR** |
+|-----------------------|----------------|---------|------------|
+| Full trajectories     | ⬆️          | ✅      | ❌         |
+| All-token tuning      | ⬆️          | ✅      | ❌         |
+| Prefix termination    | ⬇️          | ❌      | ✅         |
+| Selective tokens      | ⬇️          | ❌      | ✅         |
+| Verification-free     | ⬇️          | ❌      | ✅         |
+
+</td>
+<td>
+
+<!-- Right Table -->
+
+| **Attribute**         | **Utility** | **CD**      | **LightR** |
+|------------------------|------------------|-------------|------------|
+| Contrast usage         | /                | Inference   | Training   |
+| Size-based contrast    | ⬇️            | ✅          | ❌         |
+| Expertise contrast     | ⬆️            | ❌          | ✅         |
+| Persistent benefits    | ⬆️            | ❌          | ✅         |
+| Standalone inference  | ⬆️            | ❌          | ✅         |
+
+</td>
+</tr>
+</table>
+
+
+
+
 ## ☕️ Citation
 
 If you find this work useful, please cite our paper:
@@ -250,4 +258,4 @@ If you find this work useful, please cite our paper:
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is released under the MIT License.
