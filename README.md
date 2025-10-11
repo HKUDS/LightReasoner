@@ -176,7 +176,7 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 - **Efficiency Evaluation:**  
   - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
-  - 📘 **Training Instances** — Number of distinct training set problems used to generate the supervision dataset.  
+  - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
   
   - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
 
@@ -208,8 +208,11 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 </p>
 
 <p align="center">
-  <em>Fig. 4(a). Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
-  <em>Fig. 4(b). Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, underscoring their critical contributions.</em>
+  
+  <em>Figure 4(a): Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
+
+  <em>Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, underscoring their critical contributions.</em>
+
 </p>
 
 
@@ -248,6 +251,12 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 </td>
 </tr>
 </table>
+
+- Left: Efficiency contrasts at a glance. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the overall efficiency of the method.  
+  
+- Right: Key differences between traditional Contrastive Decoding (CD) methods and LightReasoner. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the practicality of the method.
+
+
 
 
 
