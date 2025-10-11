@@ -77,21 +77,26 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 ## 🚀 Quick Start
 
-### Installation
+### Get Ready
 ```bash
-git clone https://github.com/<your-org>/LightReasoner.git
+git clone https://github.com/HKUDS/LightReasoner.git
 cd LightReasoner
 pip install -r requirements.txt
 ```
 
 ### Sampling
 ```bash
-python sampling.py   --expert Qwen2.5-Math-1.5B   --amateur Qwen2.5-0.5B   --dataset gsm8k
+python LightR_sampling.py   --expert Qwen2.5-Math-1.5B   --amateur Qwen2.5-0.5B   --dataset gsm8k
 ```
 
 ### Fine-tuning
 ```bash
-python finetune.py   --model Qwen2.5-Math-1.5B   --data contrastive_samples.jsonl   --lora --steps 1000
+python LightR_finetuning.py   --model Qwen2.5-Math-1.5B   --data contrastive_samples.jsonl   --lora --steps 1000
+```
+
+### Merging
+```bash
+python merge.py
 ```
 
 ### Evaluation
@@ -163,7 +168,7 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
   <img src="./assets/radar_1.5B.png" width="200" />
   <img src="./assets/radar_7B.png" width="200" />
   <img src="./assets/radar_ds1.5B.png" width="200" />
-  <img src="./assets/radar_1.5Bins.png" width="200" />
+  <img src="./assets/radar_1.5Bins.png" width="195" />
   <br>
   <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
 </p>
@@ -211,7 +216,7 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
   
   <em>Figure 4(a): Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
 
-  <em>Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, underscoring their critical contributions.</em>
+  <em>Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, revealing their critical contributions.</em>
 
 </p>
 
