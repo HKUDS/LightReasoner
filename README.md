@@ -80,7 +80,8 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 *LightReasoner* is incredibly *easy* to use. We’ve designed it to be accessible — so anyone can try it out and experience its “counterintuitive effectiveness” firsthand.
 No sweat — you’ll have it set up and running with your model of choice in just a few simple steps below! 🪄
 
-### ⚙️ Get Ready
+
+### 📦 Get Ready
 ```bash
 git clone https://github.com/HKUDS/LightReasoner.git
 cd LightReasoner
@@ -95,7 +96,7 @@ pip install -r requirements.txt
 Next, download the Expert and Amateur models of your choice. For example:
 
 ```bash
-huggingface-cli download Qwen/Qwen2.5-Math-7B --local-dir ./Qwen2.5-Math-1.5B
+huggingface-cli download Qwen/Qwen2.5-Math-1.5B --local-dir ./Qwen2.5-Math-1.5B
 
 huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
 ```
@@ -106,22 +107,59 @@ Finally, prepare the training data:
 python data_prep.py
 ```
 
-⚠️ Caveat: 
+⚠️ Caveat
 
-We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation.
+We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation. This ensures that the Amateur, despite lacking math-specific training, can still produce interpretable outputs suitable for contrastive supervision.
 
 You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
 
 
-### Sampling
+
+
+### 🎯 Sampling
 ```bash
-python LightR_sampling.py   --expert Qwen2.5-Math-1.5B   --amateur Qwen2.5-0.5B   --dataset gsm8k
+python LightR_sampling.py --max_questions 1000
 ```
 
-### Fine-tuning
-```bash
-python LightR_finetuning.py   --model Qwen2.5-Math-1.5B   --data contrastive_samples.jsonl   --lora --steps 1000
-```
+⚠️ Caveat
+
+Before running the script, you should:
+
+- Update the **config section** with your own relative paths. 
+
+- Adjust the maximum number of problems to control the size of your supervision dataset, tweak the sampling parameters to explore more optimal combinations, and tune the batch size based on your available compute resources.
+
+
+
+
+### ⚙️ Fine-tuning
+
+This step launches the full LightReasoner fine-tuning pipeline — combining *dataset loading*, *LoRA configuration*, and *contrastive KLD training* into a unified workflow.
+
+⚠️ Caveat
+
+Before running the script, edit the **config section** to match your setup:
+
+- 🔹 Replace `<path_to_expert_model>` with your base model path *(e.g., `"./Qwen2.5-Math-7B"` or a local folder).*  
+
+- 🔹 Replace `<path_to_training_dataset>` with your dataset JSONL file.  
+
+- 🔹 Replace `<output_directory>` with the directory where checkpoints and the final model will be saved.  
+
+- 🔹 Set `torch_dtype` according to your hardware *(e.g., `torch.bfloat16` for **H100**, `torch.float16` for **A100**).*
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Merging
 ```bash
