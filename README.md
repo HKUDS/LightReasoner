@@ -168,17 +168,17 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
   <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
 </p>
 
-- **SFT:**  
-  1. Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
+- **Supervised Fine-Tuning (SFT):**  
+  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
   
-  2. For fair comparison, SFT uses the *same* experimental setup as LightReasoner — LoRA fine-tuning trained **only on the GSM8K training set**.
+  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
 
 - **Efficiency Evaluation:**  
-  1. **Time Budget** — Sampling plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
+  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
-  2. **Training Instances** — Number of distinct training set problemsused to generate the supervision dataset.  
+  - 📘 **Training Instances** — Number of distinct training set problems used to generate the supervision dataset.  
   
-  3. **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains only on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
+  - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
 
 
 
@@ -201,6 +201,19 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 
 
 ## 🔍 More insights
+
+<p align="center">
+  <img src="./assets/gap_vs_perf.png" alt="Sampling Stage" width="55.5%"/>
+  <img src="./assets/radar_ablations.png" alt="Fine-tuning Stage" width="34.5%"/>
+</p>
+
+<p align="center">
+  <em>Fig. 4(a). Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
+  <em>Fig. 4(b). Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, underscoring their critical contributions.</em>
+</p>
+
+
+
 
 
 ## 🏆 Comparison with Competing Methods
