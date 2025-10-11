@@ -1,0 +1,6 @@
+transformers>=4.44.0
+accelerate>=0.26.0
+datasets>=2.20.0
+huggingface_hub>=0.24.0
+tqdm>=4.66.0
+peft>=0.12.0

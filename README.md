@@ -77,12 +77,41 @@ Large language models (LLMs) have demonstrated remarkable progress in reasoning,
 
 ## 🚀 Quick Start
 
-### Get Ready
+*LightReasoner* is incredibly *easy* to use. We’ve designed it to be accessible — so anyone can try it out and experience its “counterintuitive effectiveness” firsthand.
+No sweat — you’ll have it set up and running with your model of choice in just a few simple steps below! 🪄
+
+### ⚙️ Get Ready
 ```bash
 git clone https://github.com/HKUDS/LightReasoner.git
 cd LightReasoner
+```
+
+First, install all dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
+
+Next, download the Expert and Amateur models of your choice. For example:
+
+```bash
+huggingface-cli download Qwen/Qwen2.5-Math-7B --local-dir ./Qwen2.5-Math-1.5B
+
+huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
+```
+
+Finally, prepare the training data:
+
+```bash
+python data_prep.py
+```
+
+⚠️ Caveat: 
+
+We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation.
+
+You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
+
 
 ### Sampling
 ```bash
