@@ -169,10 +169,23 @@ Before running the script, edit the **config section** to match your setup:
 
 
 
-### Merging
+### 🔗 Model Merging
+
+Use this step to **merge the full model** (base + LoRA) locally, so it behaves as a **standalone model** without any LoRA dependency.
+
 ```bash
 python merge.py
 ```
+
+#### ⚠️ Caveat
+Before running the merge script, update the **config section** with your own paths: 
+
+- 🔹 `base_model_path` to your base model directory *(e.g., `./Qwen2.5-Math-7B`)* 
+
+- 🔹 `lora_ckpt_path` to your LoRA checkpoint directory *(e.g., `./ft_qw7_gsm8k/checkpoint-1000`)*  
+
+- 🔹 `merged_model_path` to where you want the merged model to be saved *(e.g., `./ft-7B-merged`)*
+
 
 
 
