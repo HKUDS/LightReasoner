@@ -168,7 +168,7 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
   <img src="./assets/radar_1.5B.png" width="200" />
   <img src="./assets/radar_7B.png" width="200" />
   <img src="./assets/radar_ds1.5B.png" width="200" />
-  <img src="./assets/radar_1.5Bins.png" width="195" />
+  <img src="./assets/radar_1.5Bins.png" width="196" />
   <br>
   <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
 </p>
@@ -203,6 +203,13 @@ python evaluate.py   --model checkpoints/lightreasoner   --benchmarks gsm8k math
 | <nobr>Qwen2.5-Math-1.5B</nobr>            | 15.0  | 56.9 | 50.2 | 63.5 | 63.4 | 70.7 | 60.9 |
 | <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -27.3 | 59.4 | 49.0 | 68.3 | 69.6 | 70.3 | 63.3 |
 | *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
+
+
+- **Domain Expertise over Scale:** The success of Expert–Amateur collaboration is driven most effectively by domain-specific knowledge rather than model size (e.g., Qwen2.5-Math-1.5B vs. Qwen2.5-1.5B), freeing LightReasoner from rigid scaling constraints.
+
+- **Dependence on Expertise Gap:** Performance gains are closely correlated with the size of the expertise gap — as the Amateur approaches the Expert’s capability, contrastive signals weaken and improvements diminish.
+
+
 
 
 ## 🔍 More insights
