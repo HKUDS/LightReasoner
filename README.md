@@ -117,6 +117,10 @@ python data_prep.py
 
 
 ### 🎯 Sampling
+
+This step builds the **LightReasoner supervision dataset** for downstream fine-tuning. Steps with high Expert-Amateur KLD are retained. These selected steps are transformed into supervision examples that encode the Expert’s strengths through *distributional contrast*. For full details, please see [our paper](https://arxiv.org/abs/2510.07962).
+
+
 ```bash
 python LightR_sampling.py --max_questions 1000
 ```
