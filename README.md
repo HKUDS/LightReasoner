@@ -370,7 +370,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 ## ☕️ Citation
 
-If you find this work useful, please cite our paper:
+If you find this work useful, please consider citing our paper:
 
 ```
 @misc{wang2025lightreasonersmalllanguagemodels,
