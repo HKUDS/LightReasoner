@@ -373,14 +373,11 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 If you find this work useful, please consider citing our paper:
 
 ```
-@misc{wang2025lightreasonersmalllanguagemodels,
-      title={LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?}, 
-      author={Jingyuan Wang and Yankai Chen and Zhonghang Li and Chao Huang},
-      year={2025},
-      eprint={2510.07962},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2510.07962}, 
+@article{wang2025lightreasoner,
+  title={LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?},
+  author={Wang, Jingyuan and Chen, Yankai and Li, Zhonghang and Huang, Chao},
+  journal={arXiv preprint arXiv:2510.07962},
+  year={2025}
 }
 ```
 
