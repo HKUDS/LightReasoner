@@ -107,7 +107,7 @@ Finally, prepare the training data:
 python data_prep.py
 ```
 
-#### ⚠️ Caveat
+#### 📋 Note
 
 - We use GSM8K *by default* for its emphasis on step-by-step, broadly applicable logical reasoning rather than domain-specific notation. This ensures that the Amateur, despite lacking math-specific training, can still produce interpretable outputs suitable for contrastive supervision.
 
@@ -121,7 +121,7 @@ python data_prep.py
 python LightR_sampling.py --max_questions 1000
 ```
 
-#### ⚠️ Caveat
+#### 📋 Note
 
 Before running the script, you should:
 
@@ -154,7 +154,7 @@ nohup python LightR_finetuning.py > finetune.log 2>&1 &
 tail -f finetune.log
 ```
 
-#### ⚠️ Caveat
+#### 📋 Note
 
 Before running the script, edit the **config section** to match your setup:
 
@@ -177,7 +177,7 @@ Use this step to **merge the full model** (base + LoRA) locally, so it behaves a
 python merge.py
 ```
 
-#### ⚠️ Caveat
+#### 📋 Note
 Before running the merge script, update the **config section** with your own paths: 
 
 - 🔹 `base_model_path` to your base model directory *(e.g., `./Qwen2.5-Math-7B`)* 
