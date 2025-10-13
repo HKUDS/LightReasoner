@@ -4,6 +4,7 @@ import torch.nn.functional as F
 
 '''Do Expert and Amateur share the same tokenizer and vocabulary?'''
 
+
 # Load tokenizers from both models
 expert_tokenizer = AutoTokenizer.from_pretrained("./Qwen2.5-Math-7B")
 amateur_tokenizer = AutoTokenizer.from_pretrained("./Qwen2.5-0.5B")

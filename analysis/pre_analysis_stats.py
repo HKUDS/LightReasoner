@@ -2,6 +2,7 @@
 Edit placeholders below to point to your log and tweak thresholds.
 """
 
+
 import json
 from collections import defaultdict
 from math import floor
@@ -72,23 +73,18 @@ print(f"🔹 Top-1 Mismatch: {mismatch_ratio:.2f}% (Avg KL = {_safe_avg(top1_mis
 
 # 2) Confidence mismatch cases
 conf_mismatch_ratio = (len(confidence_mismatch_kl) / total * 100) if total else 0.0
-print("
-🔸 Tokens where Expert is confident (H < {0}) & Amateur is uncertain (H > {1}):".format(
-    expert_confident_H, amateur_uncertain_H
-))
+print("🔸 Tokens where Expert is confident (H < {0}) & Amateur is uncertain (H > {1}):".format(
+    expert_confident_H, amateur_uncertain_H))
 print(f"    → {len(confidence_mismatch_kl)} tokens ({conf_mismatch_ratio:.2f}%)")
 if confidence_mismatch_kl:
     print(f"    → Avg KL in these cases: {_safe_avg(confidence_mismatch_kl):.3f}")
 
 # 3) KL tail
 tail_ratio = (len(high_kl_tokens) / total * 100) if total else 0.0
-print(f"
-🔺 Tokens with KL > {high_kl_threshold:.1f} (Strong signal steps):")
+print(f"🔺 Tokens with KL > {high_kl_threshold:.1f} (Strong signal steps):")
 print(f"    → {len(high_kl_tokens)} tokens ({tail_ratio:.2f}%)")
 
-print("
-✅ These targeted stats are directly usable in Section 2.1 to support empirical claims.
-")
+print("✅ These targeted stats are directly usable in Section 2.1 to support empirical claims.")
 
 # =====================
 # KL histogram (single pass)

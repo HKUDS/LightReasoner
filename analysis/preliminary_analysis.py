@@ -5,6 +5,7 @@ from tqdm import tqdm
 import json
 import argparse
 
+
 # Optimize matmul precision for faster H100 execution
 torch.set_float32_matmul_precision('high')
 
