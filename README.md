@@ -28,8 +28,9 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 [![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
-![](https://img.shields.io/badge/PyTorch-2.1+-ee4c2c.svg)
 [![🤗 Models](https://img.shields.io/badge/🤗_Models-Coming_Soon-ffcc4d.svg)](https://huggingface.co/)
+<img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Visitors">
+<!-- ![](https://img.shields.io/badge/PyTorch-2.1+-ee4c2c.svg)-->
 
 </div>
 
@@ -409,6 +410,4 @@ If you find this work useful, please consider citing our paper:
 
 This project is released under the MIT License.
 
----
 
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff)
