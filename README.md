@@ -117,7 +117,7 @@ python data_prep.py
 
 LightReasoner relies on **Expert–Amateur model pairing** to generate supervision signals. Thus, the choice of this pair is crucial to the method’s success.  
 
-**Rule of Thumb**: 
+⚖️ **Rule of Thumb**: 
 
 The Expert should **significantly outperform** the Amateur, while the Amateur must remain **competent enough** to produce coherent reasoning. In practice, performance peaks at a balanced *“sweet spot”* rather than simply widening the capability gap.   
 
