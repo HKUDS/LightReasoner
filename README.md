@@ -95,9 +95,13 @@ pip install -r requirements.txt
 
 Next, download the Expert and Amateur models of your choice. For example:
 
+Expert Model
 ```bash
 huggingface-cli download Qwen/Qwen2.5-Math-1.5B --local-dir ./Qwen2.5-Math-1.5B
+```
 
+Amateur Model
+```bash
 huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
 ```
 
@@ -376,7 +380,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 If you find this work useful, please consider citing our paper:
 
-```
+```python
 @article{wang2025lightreasoner,
   title={LightReasoner: Can Small Language Models Teach Large Language Models Reasoning?},
   author={Wang, Jingyuan and Chen, Yankai and Li, Zhonghang and Huang, Chao},
