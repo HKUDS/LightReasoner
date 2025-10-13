@@ -106,6 +106,13 @@ huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
 ```
 
 
+3️⃣ Prepare the training data:
+
+```bash
+python data_prep.py
+```
+
+
 #### ⚠️ Caveat
 
 LightReasoner relies on **Expert–Amateur model pairing** to generate supervision signals. Thus, the choice of this pair is crucial to the method’s success.  
@@ -118,12 +125,6 @@ In our experiments, the Experts include *Qwen2.5-Math-1.5B*, *7B*, their *Instru
 
 You’re *encouraged* to explore other model families (e.g., *Llama*), but keep this **balance principle** in mind when setting up your Expert–Amateur collaboration.
 
-
-3️⃣ Prepare the training data:
-
-```bash
-python data_prep.py
-```
 
 #### 📋 Note
 
