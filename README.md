@@ -408,3 +408,7 @@ If you find this work useful, please consider citing our paper:
 ## 📜 License
 
 This project is released under the MIT License.
+
+---
+
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff)
