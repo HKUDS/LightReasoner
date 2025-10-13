@@ -87,13 +87,13 @@ git clone https://github.com/HKUDS/LightReasoner.git
 cd LightReasoner
 ```
 
-First, install all dependencies:
+1️⃣ Install all dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Next, download the Expert and Amateur models of your choice. For example:
+2️⃣ Download the Expert and Amateur models of your choice. For example:
 
 Expert Model
 ```bash
@@ -105,7 +105,21 @@ Amateur Model
 huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
 ```
 
-Finally, prepare the training data:
+
+#### ⚠️ Caveat
+
+LightReasoner relies on **Expert–Amateur model pairing** to generate supervision signals. Thus, the choice of this pair is crucial to the method’s success.  
+
+**Rule of Thumb**: 
+
+The Expert should **significantly outperform** the Amateur, while the Amateur must remain **competent enough** to produce coherent reasoning. In practice, performance peaks at a balanced *“sweet spot”* rather than simply widening the capability gap.   
+
+In our experiments, the Experts include *Qwen2.5-Math-1.5B*, *7B*, their *Instruct* counterparts, and *DeepSeek-R1-Distill* variants. The Amateur is fixed as *Qwen2.5-0.5B*, which offers strong contrast while maintaining sufficient reasoning ability to yield meaningful signals.  
+
+You’re *encouraged* to explore other model families (e.g., *Llama*), but keep this **balance principle** in mind when setting up your Expert–Amateur collaboration.
+
+
+3️⃣ Prepare the training data:
 
 ```bash
 python data_prep.py
