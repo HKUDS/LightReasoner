@@ -95,12 +95,12 @@ pip install -r requirements.txt
 
 2️⃣ Download the Expert and Amateur models of your choice. For example:
 
-Expert Model
+🦉 Expert Model
 ```bash
 huggingface-cli download Qwen/Qwen2.5-Math-1.5B --local-dir ./Qwen2.5-Math-1.5B
 ```
 
-Amateur Model
+🐣 Amateur Model
 ```bash
 huggingface-cli download Qwen/Qwen2.5-0.5B --local-dir ./Qwen2.5-0.5B
 ```
