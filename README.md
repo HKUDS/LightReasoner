@@ -28,10 +28,10 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 [![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
-<!-- [![🤗 Models](https://img.shields.io/badge/🤗_Models-Coming_Soon-ffcc4d.svg)](https://huggingface.co/) -->
 [![🤗 Models](https://img.shields.io/badge/🤗_Models-LightReasoner_Enhanced_Models-ffcc4d.svg)](https://huggingface.co/collections/bearthecoder/lightreasoner-enhanced-models-68edbf175755ca5a8c699f9c)
-
 <img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Visitors">
+
+<!-- [![🤗 Models](https://img.shields.io/badge/🤗_Models-Coming_Soon-ffcc4d.svg)](https://huggingface.co/) -->
 <!-- ![](https://img.shields.io/badge/PyTorch-2.1+-ee4c2c.svg)-->
 
 </div>
