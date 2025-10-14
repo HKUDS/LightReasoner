@@ -46,7 +46,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 
 ## 🎉 News
-
+- [x] [2025/10/14] Uploaded [`lr_samples`](./lr_samples) — pre-collected **LightReasoner training samples** for direct fine-tuning. Users can now fine-tune the corresponding models without re-running the sampling pipeline, bringing greater convenience for reproduction and downstream research.
 - [x] [2025/10/14] Released **LightReasoner Enhanced Models** on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c).
 - [x] [2025/10/12] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines. 
 
