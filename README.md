@@ -57,7 +57,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 **✨LightReasoner✨** We're flipping the script on AI training—small language models (SLMs) don't just learn from large language models (LLMs), they can actually teach LLMs better and faster!
 
 ⚡ **The Challenge: Current Training Inefficiencies**
-Traditional supervised fine-tuning (SFT) faces significant limitations:
+Supervised Fine-Tuning (SFT) faces significant limitations:
 - 📊 Data intensive: Requires extensive human labels or costly rejection sampling.
 - ⚖️ Uniform approach: Trains on all tokens equally when only ~20% are critical.
 - 🔗 Ground-truth dependent: Limits scalability to new domains.
@@ -267,10 +267,6 @@ Before running the merge script, update the **config section** with your own pat
 All evaluations are performed using the **official Qwen2.5-Math toolkit**.  
 
 Please refer to the [`evaluation`](./evaluation) folder for detailed usage and setup instructions.
-
-
-
-
 
 
 ## 📊 Main Results
