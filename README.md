@@ -156,6 +156,24 @@ Before running the script, you should:
 - Adjust the maximum number of problems to control the size of your supervision dataset, tweak the sampling parameters to explore more optimal combinations, and tune the batch size based on your available compute resources.
 
 
+#### ⚡ **Shortcut**
+
+To save you the trouble of running the sampling pipeline — which, even though much *lighter and easier* with LightReasoner, can still be daunting for those without ample compute power — we now provide *ready-to-go* LightReasoner samples that let you **jump straight to the fine-tuning stage**! 🚀  
+
+You can find the following pre-collected **LightReasoner sampling datasets** under [`LRsamples`](./LRsamples):
+
+- **`LR_Qwen7_gsm8k`** — for **Qwen2.5-Math-7B**
+
+- **`LR_ds1.5_gsm8k`** — for **DeepSeek-R1-Distill-Qwen-1.5B**
+
+- **`LR_Qwen1.5_gsm8k`** — for **Qwen2.5-Math-1.5B** 
+ 
+  - We provide **two versions**, one sampled with **Torch 3.1** and another with **Torch 3.8**, as we found that the sampling results (i.e., the model’s generated outputs) can slightly vary across Torch versions.  
+
+  - The performance fluctuation is minimal — typically within **2–3%**, with later Torch versions usually performing slightly better.
+
+These datasets make it **much easier to reproduce** our results directly — no additional sampling required! ✨
+
 
 
 ### ⚙️ Fine-tuning
