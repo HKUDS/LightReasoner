@@ -66,6 +66,22 @@ Traditional supervised fine-tuning (SFT) faces significant limitations:
 
 ---
 
+**Results: Not Just Better, But "Better and Faster"**
+
+Tested across 7 benchmarks × 5 models
+
+🚀 Performance Gains
+GSM8K: 42.5% → 70.6% (+28.1% absolute gain)
+MATH: 34.2% → 59.3% (+25.1% absolute gain)
+Strong generalization: Trained only on GSM8K, improves across all 7 benchmarks
+
+⚡ Efficiency Breakthrough
+90% less time: 4h → 0.5h
+80% fewer samples: 3,952 → 1,000 problems
+99% fewer tokens: 1.77M → 20K tokens
+
+---
+
 🌟 **Key Features of LightReasoner**:
 
 - 🎯 SLM-LLM Teaching: Counterintuitively uses smaller "amateur" models to identify critical reasoning moments where stronger "expert" models should focus learning
@@ -78,6 +94,8 @@ Traditional supervised fine-tuning (SFT) faces significant limitations:
 
 - 🧠 Domain Expertise Over Scale: Shows expertise gaps (not model size) drive effective contrasts - even same-sized models with different domain knowledge create powerful teaching signals
 
+---
+
 ## 🧩 LightReasoner Framework
 
 <p align="center">
@@ -87,13 +105,6 @@ Traditional supervised fine-tuning (SFT) faces significant limitations:
     <strong>Figure 2: Overview of the LightReasoner framework.</strong> (1) Sampling Stage: Expert and Amateur models generate distributions π<sub>E</sub> and π<sub>A</sub>. Informative step selection retains steps with D<sub>KL</sub>(π<sub>E</sub> ∥ π<sub>A</sub>) > β, and contrastive supervision constructs soft labels v<sub>C</sub> capturing the Expert's advantage through Expert–Amateur contrast. (2) Fine-tuning Stage: The Expert model is enhanced by minimizing the KL divergence between its output and v<sub>C</sub>.
   </em>
 </p>
-
-
-
-
-
-
-
 
 ## 🚀 Quick Start
 
