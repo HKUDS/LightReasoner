@@ -51,16 +51,32 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 - [x] [2025/10/14] Released **LightReasoner Enhanced Models** on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c).
 - [x] [2025/10/12] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines. 
 
+---
 
 ## ⚡ TL;DR
-**LightReasoner** is a lightweight and resource-efficient learning framework that turns weaker language models into effective teaching signals for reinforcing stronger models.
+**✨LightReasoner✨** We're flipping the script on AI training—small language models (SLMs) don't just learn from large language models (LLMs), they can actually teach LLMs better and faster!
 
+⚡ **The Challenge: Current Training Inefficiencies**
+Traditional supervised fine-tuning (SFT) faces significant limitations:
+- 📊 Data intensive: Requires extensive human labels or costly rejection sampling.
+- ⚖️ Uniform approach: Trains on all tokens equally when only ~20% are critical.
+- 🔗 Ground-truth dependent: Limits scalability to new domains.
 
-## 📝 Abstract
-Large language models (LLMs) have demonstrated remarkable progress in reasoning, often through supervised fine-tuning (SFT). However, SFT is resource-intensive, relying on large curated datasets, rejection-sampled demonstrations, and uniform optimization across all tokens—even though only a fraction carry meaningful learning value. In this work, we explore a counterintuitive idea: can smaller language models teach larger language models by revealing high-value reasoning moments that reflect the latter's unique strength? We propose *LightReasoner*, a novel framework that leverages the behavioral divergence between a stronger *expert* model and a weaker *amateur* model. LightReasoner operates in two stages: (1) a *sampling stage* that pinpoints critical reasoning moments and constructs supervision examples capturing the expert's advantage through expert–amateur contrast, and (2) a *fine-tuning stage* that aligns the expert model with these distilled examples, amplifying its reasoning strengths. Across 7 mathematical benchmarks, LightReasoner improves accuracy by up to 28.1%, while reducing time consumption by 90%, sampled problems by 80%, and tuned token usage by 99%, all without relying on ground-truth labels. By turning weaker SLMs into effective teaching signals, LightReasoner offers a scalable and resource-efficient approach for advancing LLM reasoning.
+**Key insight**: We're allocating 90% of compute to what models already know, while under-investing in the critical 10% that drives breakthroughs.
 
+---
 
+🌟 **Key Features of LightReasoner**:
 
+- 🎯 SLM-LLM Teaching: Counterintuitively uses smaller "amateur" models to identify critical reasoning moments where stronger "expert" models should focus learning
+
+- ⚡ Extreme Token Efficiency: Achieves 99% fewer tuned tokens vs SFT by selectively targeting high-impact reasoning steps instead of uniformly training on entire trajectories
+
+- 🔄 Three-Stage Lightweight Framework: (1) Critical step selection via KL divergence detection, (2) Contrastive supervision capturing relative advantages, (3) Self-distillation for internalizing expert strengths
+
+- 📈 KL Divergence-Guided Learning: Leverages behavioral divergence between expert-amateur predictions to automatically pinpoint reasoning bottlenecks without ground-truth labels
+
+- 🧠 Domain Expertise Over Scale: Shows expertise gaps (not model size) drive effective contrasts - even same-sized models with different domain knowledge create powerful teaching signals
 
 ## 🧩 LightReasoner Framework
 
