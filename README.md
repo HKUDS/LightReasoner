@@ -25,6 +25,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <div align="center">
 
 [![arXiv](https://img.shields.io/badge/arXiv-2510.07962-b31b1b.svg)](https://arxiv.org/abs/2510.07962)
+[![🤗 Paper](https://img.shields.io/badge/🤗_Paper-LightReasoner-ffcc4d.svg)](https://huggingface.co/papers/2510.07962)
 [![License](https://img.shields.io/badge/Code%20License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
