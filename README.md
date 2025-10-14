@@ -66,6 +66,15 @@ Supervised Fine-Tuning (SFT) faces significant limitations:
 
 ---
 
+<p align="center">
+  <img src="./assets/radar_1.5B.png" width="200" />
+  <img src="./assets/radar_7B.png" width="200" />
+  <img src="./assets/radar_ds1.5B.png" width="200" />
+  <img src="./assets/radar_1.5Bins.png" width="196" />
+  <br>
+  <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
+</p>
+
 **Results: Not Just Better, But "Better and Faster"**
 
 Tested across 7 benchmarks × 5 models
@@ -324,15 +333,6 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 | **Qwen2.5-Math-1.5B-Instruct** |||||
 | + SFT     | 3.4h     | 7153       | 2.08M      | +0.1%   |
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
-
-<p align="center">
-  <img src="./assets/radar_1.5B.png" width="200" />
-  <img src="./assets/radar_7B.png" width="200" />
-  <img src="./assets/radar_ds1.5B.png" width="200" />
-  <img src="./assets/radar_1.5Bins.png" width="196" />
-  <br>
-  <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
-</p>
 
 
 - 📈 **Efficiency Evaluation:**  
