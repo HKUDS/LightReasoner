@@ -41,15 +41,15 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <p align="center">
   <img src="./assets/lr_bars.png" width="800" />
   <br>
-  <em>Figure 1: LightReasoner consistently improves zero-shot pass@1 accuracy while requiring
-  90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens compared to SFT under same settings.</em>
+  <em>**LightReasoner delivers superior performance with remarkable token-efficiency** - achieving consistent improvements in zero-shot pass@1 accuracy while dramatically reducing computational overhead by 90% in training time, 80% in sampled problems, and 99% in tuned tokens compared to traditional SFT.</em>
 </p>
 
+**Key Insight**: This efficiency breakthrough demonstrates that strategic token selection, rather than exhaustive training, unlocks the true potential of reasoning enhancement - proving that smarter, not harder, is the path to scalable AI improvement.
 
 ## 🎉 News
-- [x] [2025/10/14] Uploaded [`LRsamples`](./LRsamples) — pre-collected **LightReasoner training samples** for direct fine-tuning. Users can now fine-tune the corresponding models without re-running the sampling pipeline, bringing greater convenience for reproduction and downstream research.
-- [x] [2025/10/14] Released **LightReasoner Enhanced Models** on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c).
-- [x] [2025/10/12] Released initial implementation and experiments on Qwen2.5-Math and DeepSeek baselines. 
+- [x] [2025/10/14] New Release🚀: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
+- [x] [2025/10/14] New Release🚀: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
+- [x] [2025/10/12] New Release🚀: Core implementation with Qwen2.5-Math and DeepSeek model experiment.
 
 ---
 
@@ -65,15 +65,6 @@ Supervised Fine-Tuning (SFT) faces significant limitations:
 **Key insight**: We're allocating 90% of compute to what models already know, while under-investing in the critical 10% that drives breakthroughs.
 
 ---
-
-<p align="center">
-  <img src="./assets/radar_1.5B.png" width="200" />
-  <img src="./assets/radar_7B.png" width="200" />
-  <img src="./assets/radar_ds1.5B.png" width="200" />
-  <img src="./assets/radar_1.5Bins.png" width="196" />
-  <br>
-  <em>Figure 3: LightReasoner achieves competitive or superior accuracy to SFT while requiring 90% less time, 80% fewer sampled problems, and 99% fewer tuned tokens.</em>
-</p>
 
 **Results: Not Just Better, But "Better and Faster"**
 
@@ -114,6 +105,8 @@ Strong generalization: Trained only on GSM8K, improves across all 7 benchmarks
     <strong>Figure 2: Overview of the LightReasoner framework.</strong> (1) Sampling Stage: Expert and Amateur models generate distributions π<sub>E</sub> and π<sub>A</sub>. Informative step selection retains steps with D<sub>KL</sub>(π<sub>E</sub> ∥ π<sub>A</sub>) > β, and contrastive supervision constructs soft labels v<sub>C</sub> capturing the Expert's advantage through Expert–Amateur contrast. (2) Fine-tuning Stage: The Expert model is enhanced by minimizing the KL divergence between its output and v<sub>C</sub>.
   </em>
 </p>
+
+---
 
 ## 🚀 Quick Start
 
@@ -211,7 +204,7 @@ You can find the following pre-collected **LightReasoner sampling datasets** in 
 
 These datasets make it **much easier to reproduce** our results directly — no additional sampling required! ✨
 
-
+---
 
 ### ⚙️ Fine-tuning
 
@@ -247,7 +240,7 @@ Before running the script, edit the **config section** to match your setup:
 
 - 🔹 Set `torch_dtype` according to your hardware *(e.g., `torch.bfloat16` for **H100**, `torch.float16` for **A100**).*
 
-
+---
 
 
 ### 🔗 Model Merging
@@ -268,7 +261,7 @@ Before running the merge script, update the **config section** with your own pat
 - 🔹 `merged_model_path` to where you want the merged model to be saved *(e.g., `./ft-7B-merged`)*
 
 
-
+---
 
 
 ### 📈 Evaluation
@@ -314,7 +307,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 - Efficiency vs. SFT: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
 
-
+---
 
 
 ## ⏱️ Efficiency Study
@@ -342,6 +335,20 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   
   - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
 
+---
+
+<p align="center">
+  <img src="./assets/radar_1.5B.png" width="200" />
+  <img src="./assets/radar_7B.png" width="200" />
+  <img src="./assets/radar_ds1.5B.png" width="200" />
+  <img src="./assets/radar_1.5Bins.png" width="196" />
+  <br>
+  <em>**LightReasoner matches or exceeds SFT performance with extraordinary resource efficiency** - delivering competitive accuracy while slashing training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
+</p>
+
+**Key Insight**: This reveals a fundamental paradigm shift in model training - precision targeting of critical reasoning steps vastly outperforms brute-force approaches, making high-quality AI training accessible even with limited computational budgets.
+
+---
 
 - 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
   - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
@@ -373,7 +380,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 - **Dependence on Expertise Gap:** Performance gains are closely correlated with the size of the expertise gap — as the Amateur approaches the Expert’s capability, contrastive signals weaken and improvements diminish.
 
 
-
+---
 
 ## 🔍 More Insights
 
@@ -391,7 +398,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 </p>
 
 
-
+---
 
 
 ## 🏆 Comparison with Competing Methods
@@ -433,7 +440,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 
 
-
+---
 
 
 ## ☕️ Citation
