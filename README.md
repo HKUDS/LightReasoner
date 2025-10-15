@@ -92,11 +92,11 @@ We allocate 90% of compute to what models already know, while *under-investing* 
 
 LightReasoner consistently boosts reasoning accuracy across multiple datasets:
 
-- **Qwen2.5-Math-1.5B:** +28.1% on GSM8K, +25.1% on MATH, +7.2% on SVAMP, +11.7% on ASDIV 
+- 📈 **Qwen2.5-Math-1.5B:** +28.1% on GSM8K, +25.1% on MATH, +7.2% on SVAMP, +11.7% on ASDIV 
 
-- **DeepSeek-R1-Distill-Qwen-1.5B:** +4.3% on GSM8K, +6.0% on MATH, +17.4% on OlympiadBench  
+- 📈 **DeepSeek-R1-Distill-Qwen-1.5B:** +4.3% on GSM8K, +6.0% on MATH, +17.4% on OlympiadBench  
 
-- **Qwen2.5-Math-7B:** +10.4% on GSM8K, +6.0% on MATH, +9.3% on SVAMP, +7.9% on ASDIV  
+- 📈 **Qwen2.5-Math-7B:** +10.4% on GSM8K, +6.0% on MATH, +9.3% on SVAMP, +7.9% on ASDIV  
 
 - 🌍 **Strong generalization:** Trained *only* on GSM8K, yet improves across **7 benchmarks**
 
@@ -326,6 +326,9 @@ All evaluations are performed using the **official Qwen2.5-Math toolkit**.
 Please refer to the [`evaluation`](./evaluation) folder for detailed usage and setup instructions.
 
 
+---
+
+
 ## 📊 Main Results
 
 | Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
@@ -361,6 +364,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 - **+10.4%** on GSM8K, **+6.0%** on MATH, **+9.3%** on SVAMP, **+7.9%** on ASDIV for Qwen2.5-Math-7B.  
 
 - Efficiency vs. SFT: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
+
 
 ---
 
