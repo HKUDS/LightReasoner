@@ -48,7 +48,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 **💡 Key Insight:**  
 
-This efficiency breakthrough shows that **strategic token selection**, rather than exhaustive training, most effectively unlocks the potential of LLM reasoning — proving that *smarter, not blindly harder* is the path to scalable AI improvement.
+This efficiency breakthrough shows that **strategic token selection**, rather than exhaustive training, most effectively unlocks the latent potential of LLM reasoning — proving that *smarter, not blindly harder* is the path to scalable AI improvement.
 
 
 ---
@@ -65,7 +65,8 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 ## ⚡ TL;DR
 
-**✨ LightReasoner ✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
+**✨ LightReasoner ✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* LLMs to reason better — doing so faster and smarter!
+
 
 **🔥 The Challenge:** 
 
@@ -123,19 +124,19 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 
 - 🔄 **Three-Stage Lightweight Framework:**  
 
-  (1) **Critical step selection** via KLD detection  
+  (1) **Critical step selection** via Expert-Amaeteur KLD detection
 
-  (2) **Contrastive supervision** capturing expert-amateur differentials  
+  (2) **Contrastive supervision** capturing expert-amateur behavioral differentials
 
   (3) **Self-distillation** for internalizing expert strengths  
 
 - 📈 **KL-Guided Learning:** 
   
-  Leverages **behavioral divergence** between expert and amateur predictions to **pinpoint reasoning bottlenecks** — all *without requiring ground-truth labels.*  
+  Leverages **behavioral divergence** between expert and amateur predictions to **pinpoint reasoning bottlenecks** — *all without requiring ground-truth labels.*  
 
 - 🧠 **Expertise Over Scale:** 
   
-  Demonstrates that **domain expertise gaps**, not just model size, drive effective contrast — even same-sized models with different knowledge can generate **powerful teaching signals.**
+  Demonstrates that **domain expertise gaps**, rather than model size, drive effective contrast — even same-sized models with different knowledge can generate **powerful teaching signals.**
 
 
 
@@ -389,7 +390,12 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   
   - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
 
----
+
+- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
+  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
+  
+  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
+
 
 <p align="center">
   <img src="./assets/radar_1.5B.png" width="200" />
@@ -397,18 +403,17 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   <img src="./assets/radar_ds1.5B.png" width="200" />
   <img src="./assets/radar_1.5Bins.png" width="196" />
   <br>
-  <em>**LightReasoner matches or exceeds SFT performance with extraordinary resource efficiency** - delivering competitive accuracy while slashing training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
+  <em><strong>LightReasoner matches or surpasses SFT performance with remarkable resource efficiency</strong> — achieving competitive accuracy while cutting training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
+
 </p>
 
-**Key Insight**: This reveals a fundamental paradigm shift in model training - precision targeting of critical reasoning steps vastly outperforms brute-force approaches, making high-quality AI training accessible even with limited computational budgets.
+
+💡 **Key Insight:** 
+
+This marks a fundamental shift in how models are trained — **targeting critical reasoning steps** outperforms brute-force learning, making high-quality AI training achievable even with limited computational resources.
+
 
 ---
-
-- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
-  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
-  
-  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
-
 
 
 ## 🧠 Expertise-Driven Contrast
