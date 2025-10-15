@@ -47,7 +47,8 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 
 **💡 Key Insight:**  
-This efficiency breakthrough shows that **strategic token selection**, rather than exhaustive training, unlocks the potential of LLM reasoning enhancement — proving that *smarter, not blindly harder* is the path to scalable AI improvement.
+
+This efficiency breakthrough shows that **strategic token selection**, rather than exhaustive training, most effectively unlocks the potential of LLM reasoning — proving that *smarter, not blindly harder* is the path to scalable AI improvement.
 
 
 ---
@@ -66,7 +67,8 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 **✨LightReasoner✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
 
-🔥 **The Challenge: Inefficient Training Paradigms**   
+🔥 **The Challenge:** 
+
 Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
 
 - 📊 **Data-Intensive:** Relies on human-labeled or rejection-sampled datasets.
@@ -77,27 +79,37 @@ Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
 
 
 🔍 **Key Insight:**  
+
 We allocate 90% of compute to what models already know, while *under-investing* in the critical 10% that truly drives breakthroughs.
 
 
+## 📈 LightReasoner: *Better and Faster*
+
+**Tested across 7 benchmarks × 5 models**
+
+🚀 **Performance Gains**  
+
+LightReasoner consistently boosts reasoning accuracy across multiple datasets:
+
+- **Qwen2.5-Math-1.5B:** +28.1% on GSM8K, +25.1% on MATH, +7.2% on SVAMP, +11.7% on ASDIV 
+
+- **DeepSeek-R1-Distill-Qwen-1.5B:** +4.3% on GSM8K, +6.0% on MATH, +17.4% on OlympiadBench  
+
+- **Qwen2.5-Math-7B:** +10.4% on GSM8K, +6.0% on MATH, +9.3% on SVAMP, +7.9% on ASDIV  
+
+- 🌍 **Strong generalization:** Trained *only* on GSM8K, yet improves across **7 benchmarks**
 
 
+⚡ **Efficiency Breakthrough**  
 
----
+Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic efficiency gains compared with SFT:
 
-**Results: Not Just Better, But "Better and Faster"**
+- ⏱️ **90% less total time:** 4h → 0.5h  
 
-Tested across 7 benchmarks × 5 models
+- 🧾 **80% fewer sampled problems:** 3,952 → 1,000 problems  
 
-🚀 Performance Gains
-GSM8K: 42.5% → 70.6% (+28.1% absolute gain)
-MATH: 34.2% → 59.3% (+25.1% absolute gain)
-Strong generalization: Trained only on GSM8K, improves across all 7 benchmarks
+- 🔢 **99% fewer tuned tokens:** 1.77M → 20K tokens  
 
-⚡ Efficiency Breakthrough
-90% less time: 4h → 0.5h
-80% fewer samples: 3,952 → 1,000 problems
-99% fewer tokens: 1.77M → 20K tokens
 
 ---
 
