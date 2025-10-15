@@ -111,19 +111,34 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 - 🔢 **99% fewer tuned tokens:** 1.77M → 20K tokens  
 
 
----
+🌟 **Key Features**
 
-🌟 **Key Features of LightReasoner**:
+- 🎯 **SLM–LLM Teaching:** 
+  
+  Counterintuitively uses smaller *“amateur”* models to identify **critical reasoning moments** where stronger *“expert”* models should focus their learning.  
 
-- 🎯 SLM-LLM Teaching: Counterintuitively uses smaller "amateur" models to identify critical reasoning moments where stronger "expert" models should focus learning
+- ⚡ **Extreme Token Efficiency:** 
+  
+  Achieves **99% fewer tuned tokens** than SFT by selectively optimizing **high-impact reasoning steps** instead of training uniformly on full trajectories.  
 
-- ⚡ Extreme Token Efficiency: Achieves 99% fewer tuned tokens vs SFT by selectively targeting high-impact reasoning steps instead of uniformly training on entire trajectories
+- 🔄 **Three-Stage Lightweight Framework:**  
 
-- 🔄 Three-Stage Lightweight Framework: (1) Critical step selection via KL divergence detection, (2) Contrastive supervision capturing relative advantages, (3) Self-distillation for internalizing expert strengths
+  (1) **Critical step selection** via KLD detection  
 
-- 📈 KL Divergence-Guided Learning: Leverages behavioral divergence between expert-amateur predictions to automatically pinpoint reasoning bottlenecks without ground-truth labels
+  (2) **Contrastive supervision** capturing expert-amateur differentials  
 
-- 🧠 Domain Expertise Over Scale: Shows expertise gaps (not model size) drive effective contrasts - even same-sized models with different domain knowledge create powerful teaching signals
+  (3) **Self-distillation** for internalizing expert strengths  
+
+- 📈 **KL-Guided Learning:** 
+  
+  Leverages **behavioral divergence** between expert and amateur predictions to **pinpoint reasoning bottlenecks** — all *without requiring ground-truth labels.*  
+
+- 🧠 **Expertise Over Scale:** 
+  
+  Demonstrates that **domain expertise gaps**, not just model size, drive effective contrast — even same-sized models with different knowledge can generate **powerful teaching signals.**
+
+
+
 
 
 ---
