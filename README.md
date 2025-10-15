@@ -41,28 +41,47 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <p align="center">
   <img src="./assets/lr_bars.png" width="800" />
   <br>
-  <em>**LightReasoner delivers superior performance with remarkable token-efficiency** - achieving consistent improvements in zero-shot pass@1 accuracy while dramatically reducing computational overhead by 90% in training time, 80% in sampled problems, and 99% in tuned tokens compared to traditional SFT.</em>
+  <em><strong>LightReasoner delivers superior performance with remarkable token efficiency</strong> - achieving consistent improvements in zero-shot pass@1 accuracy while dramatically reducing computational overhead by 90% in total time, 80% in sampled problems, and 99% in tuned tokens compared to traditional SFT.</em>
 </p>
 
-**Key Insight**: This efficiency breakthrough demonstrates that strategic token selection, rather than exhaustive training, unlocks the true potential of reasoning enhancement - proving that smarter, not harder, is the path to scalable AI improvement.
+
+
+**💡 Key Insight:**  
+This efficiency breakthrough shows that **strategic token selection**, rather than exhaustive training, unlocks the potential of LLM reasoning enhancement — proving that *smarter, not blindly harder* is the path to scalable AI improvement.
+
+
+---
+
 
 ## 🎉 News
 - [x] [2025/10/14] New Release🚀: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
 - [x] [2025/10/14] New Release🚀: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
 - [x] [2025/10/12] New Release🚀: Core implementation with Qwen2.5-Math and DeepSeek model experiment.
 
+
 ---
 
+
 ## ⚡ TL;DR
-**✨LightReasoner✨** We're flipping the script on AI training—small language models (SLMs) don't just learn from large language models (LLMs), they can actually teach LLMs better and faster!
 
-⚡ **The Challenge: Current Training Inefficiencies**
-Supervised Fine-Tuning (SFT) faces significant limitations:
-- 📊 Data intensive: Requires extensive human labels or costly rejection sampling.
-- ⚖️ Uniform approach: Trains on all tokens equally when only ~20% are critical.
-- 🔗 Ground-truth dependent: Limits scalability to new domains.
+**✨LightReasoner✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
 
-**Key insight**: We're allocating 90% of compute to what models already know, while under-investing in the critical 10% that drives breakthroughs.
+🔥 **The Challenge: Inefficient Training Paradigms**  
+Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
+
+- 📊 **Data-Intensive:** Relies on human-labeled or rejection-sampled datasets.
+
+- ⚖️ **Uniform Learning:** Trains all tokens equally, even though only a small portion truly matter.  
+
+- 🔗 **Ground-Truth Dependency:** Hinders adaptability to new domains and reasoning formats.  
+
+
+🔍 **Key Insight:** 
+We allocate 90% of compute to what models already know, while *under-investing* in the critical 10% that truly drives breakthroughs.
+
+
+
+
 
 ---
 
@@ -166,6 +185,7 @@ You’re *encouraged* to explore other model families (e.g., *Llama*), but keep 
 - You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
 
 
+---
 
 
 ### 🎯 Sampling
@@ -204,7 +224,9 @@ You can find the following pre-collected **LightReasoner sampling datasets** in 
 
 These datasets make it **much easier to reproduce** our results directly — no additional sampling required! ✨
 
+
 ---
+
 
 ### ⚙️ Fine-tuning
 
@@ -239,6 +261,7 @@ Before running the script, edit the **config section** to match your setup:
 - 🔹 Replace `<output_directory>` with the directory where checkpoints and the final model will be saved.  
 
 - 🔹 Set `torch_dtype` according to your hardware *(e.g., `torch.bfloat16` for **H100**, `torch.float16` for **A100**).*
+
 
 ---
 
