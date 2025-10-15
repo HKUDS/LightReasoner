@@ -65,20 +65,20 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 ## ⚡ TL;DR
 
-**✨LightReasoner✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
+**✨ LightReasoner ✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
 
-🔥 **The Challenge:** 
+**🔥 The Challenge:** 
 
 Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
 
-- 📊 **Data-Intensive:** Relies on human-labeled or rejection-sampled datasets.
+- **📊 Data-Intensive:** Relies on human-labeled or rejection-sampled datasets.
 
-- ⚖️ **Uniform Learning:** Trains all tokens equally, even though only a small portion truly matter.  
+- **⚖️ Uniform Learning:** Trains all tokens equally, even though only a small portion truly matter.  
 
-- 🔗 **Ground-Truth Dependency:** Hinders adaptability to new domains and reasoning formats.  
+- **🔗 Ground-Truth Dependency:** Hinders adaptability to new domains and reasoning formats.  
 
 
-🔍 **Key Insight:**  
+**🔍 Key Insight:**  
 
 We allocate 90% of compute to what models already know, while *under-investing* in the critical 10% that truly drives breakthroughs.
 
@@ -104,7 +104,7 @@ LightReasoner consistently boosts reasoning accuracy across multiple datasets:
 
 Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic efficiency gains compared with SFT:
 
-- ⏱️ **90% less total time:** 4h → 0.5h  
+- ⏱️ **90% less total time:** 4 hours → 0.5 hours 
 
 - 🧾 **80% fewer sampled problems:** 3,952 → 1,000 problems  
 
@@ -125,7 +125,9 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 
 - 🧠 Domain Expertise Over Scale: Shows expertise gaps (not model size) drive effective contrasts - even same-sized models with different domain knowledge create powerful teaching signals
 
+
 ---
+
 
 ## 🧩 LightReasoner Framework
 
@@ -137,7 +139,9 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
   </em>
 </p>
 
+
 ---
+
 
 ## 🚀 Quick Start
 
