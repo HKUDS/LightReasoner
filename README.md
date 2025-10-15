@@ -66,7 +66,7 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 **✨LightReasoner✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* them to reason better and faster!
 
-🔥 **The Challenge: Inefficient Training Paradigms**  
+🔥 **The Challenge: Inefficient Training Paradigms**   
 Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
 
 - 📊 **Data-Intensive:** Relies on human-labeled or rejection-sampled datasets.
@@ -76,7 +76,7 @@ Supervised Fine-Tuning (SFT) struggles with three core bottlenecks:
 - 🔗 **Ground-Truth Dependency:** Hinders adaptability to new domains and reasoning formats.  
 
 
-🔍 **Key Insight:** 
+🔍 **Key Insight:**  
 We allocate 90% of compute to what models already know, while *under-investing* in the critical 10% that truly drives breakthroughs.
 
 
