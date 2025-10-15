@@ -383,18 +383,18 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
 
+- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
+  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
+  
+  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
+
+
 - 📈 **Efficiency Evaluation:**  
   - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
   - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
   
   - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
-
-
-- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
-  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
-  
-  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
 
 
 <p align="center">
@@ -498,7 +498,6 @@ This marks a fundamental shift in how models are trained — **targeting critica
 - Right: Key differences between traditional Contrastive Decoding (CD) methods and LightReasoner. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the practicality of the method.
 
 
-
 ---
 
 
@@ -516,8 +515,10 @@ If you find this work useful, please consider citing our paper:
 ```
 
 
+---
+
+
 ## 📜 License
 
-This project is released under the MIT License.
-
+This project is released under the [MIT License](./LICENSE).
 
