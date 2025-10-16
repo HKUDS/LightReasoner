@@ -282,6 +282,12 @@ nohup python LightR_finetuning.py > finetune.log 2>&1 &
 tail -f finetune.log
 ```
 
+
+#### ⚠️ Caveat
+
+*The expert model used for fine-tuning must be identical to the one used during sampling — this alignment is essential for correct behavior.*
+
+
 #### 📋 Note
 
 Before running the script, edit the **config section** to match your setup:
