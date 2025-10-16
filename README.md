@@ -41,7 +41,7 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <p align="center">
   <img src="./assets/lr_bars.png" width="800" />
   <br>
-  <em><strong>LightReasoner delivers superior performance with remarkable token efficiency</strong> - achieving consistent improvements in zero-shot pass@1 accuracy while dramatically reducing computational overhead by 90% in total time, 80% in sampled problems, and 99% in tuned tokens compared to traditional SFT.</em>
+  <em><strong>Figure 1: LightReasoner delivers superior performance with remarkable token efficiency</strong> - achieving consistent improvements in zero-shot pass@1 accuracy while dramatically reducing computational overhead by 90% in total time, 80% in sampled problems, and 99% in tuned tokens compared to traditional SFT.</em>
 </p>
 
 
@@ -65,7 +65,7 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 ## ⚡ TL;DR
 
-**✨ LightReasoner ✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* LLMs to reason better — doing so faster and smarter!
+**✨ LightReasoner ✨** flips the script on AI training — small language models (SLMs) don’t just *learn* from large ones (LLMs); they can actually *teach* LLMs better and faster!
 
 
 **🔥 The Challenge:** 
@@ -407,14 +407,14 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   <img src="./assets/radar_ds1.5B.png" width="200" />
   <img src="./assets/radar_1.5Bins.png" width="196" />
   <br>
-  <em><strong>LightReasoner matches or surpasses SFT performance with remarkable resource efficiency</strong> — achieving competitive accuracy while cutting training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
+  <em><strong>Figure 3: LightReasoner matches or surpasses SFT performance with remarkable resource efficiency</strong> — achieving competitive accuracy while cutting training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
 
 </p>
 
 
 💡 **Key Insight:** 
 
-This marks a fundamental shift in how models are trained — **targeting critical reasoning steps** outperforms brute-force learning, making high-quality AI training achievable even with limited computational resources.
+*This marks a fundamental shift in how models are trained — **targeting critical reasoning steps** outperforms brute-force learning, making high-quality AI training achievable even with limited computational resources.*
 
 
 ---
@@ -497,9 +497,9 @@ This marks a fundamental shift in how models are trained — **targeting critica
 </tr>
 </table>
 
-- Left: Efficiency contrasts at a glance. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the overall efficiency of the method.  
+- *Left:* Efficiency contrasts at a glance. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the overall efficiency of the method. 
   
-- Right: Key differences between traditional Contrastive Decoding (CD) methods and LightReasoner. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the practicality of the method.
+- *Right:* Key differences between traditional Contrastive Decoding (CD) methods and LightReasoner. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the practicality of the method.
 
 
 ---
