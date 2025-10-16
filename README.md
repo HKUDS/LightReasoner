@@ -55,9 +55,9 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 
 ## 🎉 News
-- [x] [2025/10/14] New Release🚀: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
-- [x] [2025/10/14] New Release🚀: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
-- [x] [2025/10/12] New Release🚀: Core implementation with Qwen2.5-Math and DeepSeek model experiment.
+- [x] [2025/10/14] 🚀 New Release: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
+- [x] [2025/10/14] 🚀 New Release: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
+- [x] [2025/10/12] 🚀 New Release: Core implementation with Qwen2.5-Math and DeepSeek model experiment.
 
 
 ---
@@ -454,9 +454,9 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 <p align="center">
   
-  <em>Figure 4(a): Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
+  <em>👈 Figure 4(a): Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
 
-  <em>Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, revealing their critical contributions.</em>
+  <em>👉 Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, revealing their critical contributions.</em>
 
 </p>
 
