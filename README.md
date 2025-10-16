@@ -9,10 +9,14 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 <!-- Authors -->
 <h3 align="center">
-<a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank">Jingyuan Wang</a> ·
-<a href="https://scholar.google.com/citations?user=k6yAt6IAAAAJ&hl=en&oi=sra" target="_blank">Yankai Chen</a> ·
-<a href="https://scholar.google.com/citations?user=__9uvQkAAAAJ&hl=en" target="_blank">Zhonghang Li</a> ·
-<a href="https://scholar.google.com/citations?user=Zkv9FqwAAAAJ&hl=en" target="_blank">Chao Huang</a>
+<a href="https://scholar.google.com/citations?user=BGT3Gb8AAAAJ&hl=en" target="_blank"> Jingyuan Wang</a> ·
+
+<a href="https://scholar.google.com/citations?user=k6yAt6IAAAAJ&hl=en&oi=sra" target="_blank"> Yankai Chen</a> ·
+
+<a href="https://scholar.google.com/citations?user=__9uvQkAAAAJ&hl=en" target="_blank"> Zhonghang Li</a> ·
+
+<a href="https://scholar.google.com/citations?user=Zkv9FqwAAAAJ&hl=en" target="_blank"> Chao Huang</a>
+
 </h3>
 
 
