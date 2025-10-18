@@ -30,10 +30,10 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
 [![🤗 Models](https://img.shields.io/badge/🤗_Models-LightReasoner_Models-ffcc4d.svg)](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c)
-
-
-<img src="https://img.shields.io/github/stars/HKUDS/LightReasoner?style=for-the-badge&logo=github&label=Stars&color=00d4ff" alt="GitHub stars">
 <br>
+
+<a href="https://github.com/HKUDS/LightReasoner/stargazers"><img src="https://img.shields.io/github/stars/HKUDS/LightReasoner?color=00d9ff&style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a2e&label=Stars" alt="GitHub stars">
+</a>
 
 <a href="./Communication.md"><img src="https://img.shields.io/badge/💬Feishu-Group-07c160?style=for-the-badge&logoColor=white&labelColor=1a1a2e"></a>
 <a href="./Communication.md"><img src="https://img.shields.io/badge/WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
