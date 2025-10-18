@@ -541,6 +541,9 @@ Thank you for your interest in our work!
 This project is released under the [MIT License](./LICENSE).
 
 
+---
+
+
 <p align="center">
   <em> ❤️ Thanks for visiting ✨ LightReasoner!</em><br><br>
   <img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Views">
