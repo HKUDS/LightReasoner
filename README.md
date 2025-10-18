@@ -30,7 +30,13 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 [![Baselines](https://img.shields.io/badge/Baselines-Qwen2.5--Math-blue.svg)](https://github.com/QwenLM/Qwen2.5-Math)
 ![](https://img.shields.io/badge/Python-3.10+-yellow.svg)
 [![🤗 Models](https://img.shields.io/badge/🤗_Models-LightReasoner_Models-ffcc4d.svg)](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c)
-<img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Visitors">
+
+
+<img src="https://img.shields.io/github/stars/HKUDS/LightReasoner?style=for-the-badge&logo=github&label=Stars&color=00d4ff" alt="GitHub stars">
+
+
+
+
 
 <br>
 
@@ -166,7 +172,7 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 
 ## 🚀 Quick Start
 
-*LightReasoner* is incredibly *easy* to use. We’ve designed it to be accessible — so anyone can try it out and experience its “counterintuitive effectiveness” firsthand.
+*LightReasoner* is incredibly *easy* to use. We’ve designed it to be accessible — so anyone can try it out and experience its *“counterintuitive effectiveness”* firsthand.
 No sweat — you’ll have it set up and running with your model of choice in just a few 🪄 simple steps below!
 
 
@@ -539,3 +545,10 @@ Thank you for your interest in our work!
 
 This project is released under the [MIT License](./LICENSE).
 
+
+---
+
+<p align="center">
+  <em>✨ Thanks for visiting LightReasoner!</em><br><br>
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Views">
+</p>
