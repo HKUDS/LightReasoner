@@ -63,7 +63,7 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 ## 🎉 News
 - [x] [2025/10/14] 🚀 New Release: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
 - [x] [2025/10/14] 🚀 New Release: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
-- [x] [2025/10/12] 🚀 New Release: Core implementation with Qwen2.5-Math and DeepSeek model experiment.
+- [x] [2025/10/12] 🚀 New Release: Core implementation with Qwen2.5-Math and DeepSeek-R1 models.
 
 
 ---
@@ -410,7 +410,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 - 📈 **Efficiency Evaluation:** 
  
-  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
+  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on *a single NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
   - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
   
