@@ -405,12 +405,17 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   
   - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
 
-  - 🎯 **Key Difference:** *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories — an *inherent* difference dictated by their respective training paradigms.
+  - 🎯 **Key Difference:**  
+  
+    - *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories — an *inherent* difference dictated by their respective training paradigms.  
+
+    - Thus, each *LightReasoner* training instance corresponds to a **single next-token prediction**, whereas each *SFT* example corresponds to a **full reasoning trajectory**.
+
 
 
 - 📈 **Efficiency Evaluation:** 
  
-  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on *a single NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
+  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a *single NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
   - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
   
