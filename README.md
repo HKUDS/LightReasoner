@@ -33,11 +33,6 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 
 <img src="https://img.shields.io/github/stars/HKUDS/LightReasoner?style=for-the-badge&logo=github&label=Stars&color=00d4ff" alt="GitHub stars">
-
-
-
-
-
 <br>
 
 <a href="./Communication.md"><img src="https://img.shields.io/badge/💬Feishu-Group-07c160?style=for-the-badge&logoColor=white&labelColor=1a1a2e"></a>
@@ -546,9 +541,7 @@ Thank you for your interest in our work!
 This project is released under the [MIT License](./LICENSE).
 
 
----
-
 <p align="center">
-  <em>✨ Thanks for visiting LightReasoner!</em><br><br>
+  <em> ❤️ Thanks for visiting ✨ LightReasoner!</em><br><br>
   <img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.LightReasoner&style=for-the-badge&color=00d4ff" alt="Views">
 </p>
