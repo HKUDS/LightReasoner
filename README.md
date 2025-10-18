@@ -399,18 +399,22 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
 
-- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
+- 🧑‍🏫 **Supervised Fine-Tuning (SFT):** 
+
   - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
   
   - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
 
+  - 🎯 **Key Difference:** *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories — an *inherent* difference dictated by their respective training paradigms.
 
-- 📈 **Efficiency Evaluation:**  
+
+- 📈 **Efficiency Evaluation:** 
+ 
   - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
   
   - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
   
-  - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
+  - 🔢 **Tuned Tokens** — Computational overhead measured at the token level.
 
 
 <p align="center">
