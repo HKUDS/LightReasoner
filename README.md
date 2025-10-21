@@ -104,6 +104,8 @@ LightReasoner consistently boosts reasoning accuracy across multiple datasets:
 
 - 📈 **Qwen2.5-Math-7B:** +10.4% on GSM8K, +6.0% on MATH, +9.3% on SVAMP, +7.9% on ASDIV  
 
+- 📈 **Qwen2.5-Math-1.5B-Instruct:** +1.9% on GSM8K, +2.6% on Minerva Math
+
 - 🌍 **Strong generalization:** Trained *only* on GSM8K, yet improves across **7 benchmarks**
 
 
@@ -143,9 +145,6 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 - 🧠 **Expertise Over Scale:** 
   
   Demonstrates that **domain expertise gaps**, rather than model size, drive effective contrast — even same-sized models with different knowledge can generate **powerful teaching signals.**
-
-
-
 
 
 ---
@@ -224,6 +223,8 @@ You’re *encouraged* to explore other model families (e.g., *Llama*), but keep 
 
   - For instance, if you experiment with the **MATH** dataset — a collection of high-school competition problems that are significantly harder than GSM8K — it’s recommended to upgrade the Amateur model from a generic **Qwen2.5** base model to the specialized **Qwen2.5-Math** variant. The base models were not math-pretrained and may struggle to produce coherent outputs on MATH, potentially destabilizing the expert–amateur contrast.
 
+  - The *balance principle* still applies here — the Amateur should be *adequately weaker* than the Expert to produce a clear contrast, yet capable enough to maintain coherent reasoning.
+
 
 ---
 
@@ -246,7 +247,7 @@ Before running the script, you should:
 
 - Adjust the maximum number of problems to control the size of your supervision dataset, tweak the sampling parameters to explore more optimal combinations, and tune the batch size based on your available compute resources.
 
-  - To give you a rough picture, in practice, we find that sampling **1,000 problems** from the GSM8K training set (with **β = 0.4**) yields approximately **20,000 LightReasoner contrast samples**, which is already sufficient for **LoRA fine-tuning to converge** on the baseline models we tested.
+  - To give you a rough picture, in practice, we find that sampling **1,000 problems** from the GSM8K training set (with the filtering threshold **β = 0.4**) yields approximately **20,000 LightReasoner contrastive samples**, which is already sufficient for **LoRA fine-tuning to converge** on the baseline models we tested.
 
 
 #### ⚡ **Shortcut**
