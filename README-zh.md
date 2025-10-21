@@ -259,56 +259,48 @@ LR_Qwen1.5_gsm8k — 适用于 Qwen2.5-Math-1.5B
 这些数据集使得直接复现我们的结果容易得多—— 无需额外采样！✨
 
 
-
-
-
-
-
-
-
-
 ---
 
 
-### ⚙️ Fine-tuning
+### ⚙️ 微调
 
-This step launches the full LightReasoner fine-tuning pipeline — combining *dataset loading*, *LoRA configuration*, and *contrastive KLD training* into a unified workflow.
+此步骤启动完整的 LightReasoner 微调流程 —— 将 *数据集加载* 、*LoRA 配置* 和 *对比 KLD 训练* 结合到一个统一的工作流中。
 
 
-#### 💻 Run Options
+#### 💻 运行选项
 
-**Foreground (simple run):**
+**前台运行（简单运行）：**
 ```bash
 python LightR_finetuning.py
 ```
 
-**Background (recommended for long training):**
+**后台运行（推荐用于长时间训练）：**
 ```bash
 nohup python LightR_finetuning.py > finetune.log 2>&1 &
 ```
 
-**Monitor progress:**
+**监控进度：**
 ```bash
 tail -f finetune.log
 ```
 
 
-#### ⚠️ Caveat
+#### ⚠️ 注意事项
 
-*The expert model used for fine-tuning must be identical to the one used during sampling — this alignment is essential for correct behavior.*
+*用于微调的专家模型必须与采样期间使用的专家模型完全相同 —— 这种一致性对于正确行为至关重要。*
 
 
-#### 📋 Note
+#### 📋 说明
 
-Before running the script, edit the **config section** to match your setup:
+在运行脚本之前，编辑 **配置部分** 以匹配您的设置：
 
-- 🔹 Replace `<path_to_expert_model>` with your base model path *(e.g., `"./Qwen2.5-Math-7B"` or a local folder).*  
+- 🔹 将 `<path_to_expert_model>` 替换为您的基础模型路径 *(例如， `"./Qwen2.5-Math-7B"` 或本地文件夹)。*  
 
-- 🔹 Replace `<path_to_training_dataset>` with your dataset JSONL file.  
+- 🔹 将 `<path_to_training_dataset>` 替换为您的数据集 JSONL 文件路径。
 
-- 🔹 Replace `<output_directory>` with the directory where checkpoints and the final model will be saved.  
+- 🔹 将 `<output_directory>` 替换为保存检查点和最终模型的目录。
 
-- 🔹 Set `torch_dtype` according to your hardware *(e.g., `torch.bfloat16` for **H100**, `torch.float16` for **A100**).*
+- 🔹 根据您的硬件设置 `torch_dtype` *(例如，**H100** 用 `torch.bfloat16`, **A100** 用 `torch.float16`).*
 
 
 ---
@@ -345,7 +337,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 ---
 
 
-## 📊 Main Results
+## 📊 主要结果
 
 | Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
 |-----------------------------------------------|-------|------|-------|-------|-------------------|---------------|----------------|------|
@@ -385,9 +377,9 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 ---
 
 
-## ⏱️ Efficiency Study
+## ⏱️ 效率研究
 
-| **Method** | **Total Time** | **Sampled Problems** | **Tuned Tokens** | **Average Gain** |
+| **方法** | **总时间** | **采样问题数** | **调优 Token 数** | **平均增益** |
 |------------|----------|------------|------------|----------|
 | **Qwen2.5-Math-1.5B** |||||
 | + SFT      | 4.0h     | 3952       | 1.77M      | +7.7%   |
@@ -403,18 +395,20 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 | **+ LightReasoner** | **0.4h** | **1000**  | **0.02M**  | +0.1%   |
 
 
-- 🧑‍🏫 **Supervised Fine-Tuning (SFT):**  
-  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.  
-  
-  - For a fair comparison, SFT adopts the *same* experimental configuration as LightReasoner, performing LoRA-based fine-tuning *exclusively* on the GSM8K training set.
+- 🧑‍🏫 **监督微调 (SFT)：**  
+  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.
+
+  - 通过拒绝采样实现，模型在正确的推理轨迹演示上进行微调。
+
+  - 为公平比较，SFT 采用与 LightReasoner *相同的* 实验配置，仅在 *GSM8K训练集上* 进行基于 LoRA 的微调。  
 
 
-- 📈 **Efficiency Evaluation:**  
-  - ⏱️ **Time Budget** — Sampling time plus fine-tuning time, measured on a single *NVIDIA H200 GPU* without inference accelerators (e.g., vLLM).  
+- 📈 **效率评估：**  
+  - ⏱️ **Time Budget** — 时间预算 — 采样时间加微调时间，在 *单个 NVIDIA H200 GPU* 上测量，未使用推理加速器（例如 vLLM）。  
   
-  - 📘 **Training Instances** — Number of distinct GSM8K training set problems used to generate the supervision dataset.  
+  - 📘 **训练实例数** — 用于生成监督数据集的 GSM8K 训练集中不同问题的数量。
   
-  - 🔢 **Tuned Tokens** — Computational overhead at the token level: *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories.
+  - 🔢 **调优 Token 数** — Token 级别的计算开销：*LightReasoner* 在选择性下一个 Token 预测上训练，而 *SFT* 在整个推理轨迹上优化。
 
 
 <p align="center">
@@ -423,40 +417,40 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   <img src="./assets/radar_ds1.5B.png" width="200" />
   <img src="./assets/radar_1.5Bins.png" width="196" />
   <br>
-  <em><strong>Figure 3: LightReasoner matches or surpasses SFT performance with remarkable resource efficiency</strong> — achieving competitive accuracy while cutting training time by 90%, reducing sampled problems by 80%, and requiring 99% fewer tuned tokens.</em>
+  <em><strong>图 3: LightReasoner 以卓越的资源效率达到或超越 SFT 性能</strong> — 在取得有竞争力准确率的同时，将训练时间减少 90%，采样问题减少 80%，并需要少 99% 的调优 Token。</em>
 
 </p>
 
 
-💡 **Key Insight:** 
+💡 **核心洞察：**
 
-*This marks a fundamental shift in how models are trained — **targeting critical reasoning steps** outperforms brute-force learning, making high-quality AI training achievable even with limited computational resources.*
+*这标志着模型训练方式的根本转变 —— 瞄准关键推理步骤 胜过蛮力学习，使得即使计算资源有限，也能实现高质量的 AI 训练。*
 
 
 ---
 
 
-## 🧠 Expertise-Driven Contrast
+## 🧠 专长驱动的对比
 
-| **Amateur Model** | **Perf. Gap** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **AVG.** |
+| **业余模型** | **性能差距** | **GSM8K** | **MATH** | **SVAMP** | **ASDiv** | **MMLU STEM** | **平均** |
 |-------------------|-------------|-----------|----------|-----------|-----------|---------------|----------|
-| **Expert: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
+| **专家: <nobr>Qwen2.5-Math-1.5B</nobr>** |||||||||
 | **<nobr>Qwen2.5-0.5B</nobr>**             | **38.2**  | **70.6** | **59.3** | **76.0** | **79.8** | **54.9** | **68.1** |
 | <nobr>Qwen2.5-1.5B</nobr>                 | 35.1  | 63.4 | 57.1 | 69.7 | 75.7 | 54.8 | 64.1 |
 | <nobr>Qwen2.5-Math-1.5B</nobr>            | /  | / | / | / | / | / | / |
 | <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -42.3 | 41.4 | 35.5 | 67.5 | 66.4 | 55.0 | 53.2 |
-| *Expert Only (Baseline)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
-| **Expert: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
+| *仅专家 (基线)*                  | /     | 42.5 | 34.2 | 68.8 | 68.1 | 49.8 | 52.7 |
+| **专家: <nobr>Qwen2.5-Math-7B</nobr>** |||||||||
 | **<nobr>Qwen2.5-0.5B</nobr>**             | **53.2**  | **67.9** | **57.8** | **77.2** | **80.6** | **70.5** | **70.8** |
 | <nobr>Qwen2.5-1.5B</nobr>                 | 50.1  | 69.0 | 56.0 | 77.6 | 78.9 | 69.5 | 70.2 |
 | <nobr>Qwen2.5-Math-1.5B</nobr>            | 15.0  | 56.9 | 50.2 | 63.5 | 63.4 | 70.7 | 60.9 |
 | <nobr>Qwen2.5-Math-1.5B-Ins</nobr>        | -27.3 | 59.4 | 49.0 | 68.3 | 69.6 | 70.3 | 63.3 |
-| *Expert Only (Baseline)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
+| *仅专家 (基线)*                  | /     | 57.5 | 51.8 | 67.9 | 72.7 | 69.8 | 63.9 |
 
 
-- **Domain Expertise over Scale:** *The success of Expert–Amateur collaboration is driven most effectively by domain-specific knowledge rather than model size (e.g., Qwen2.5-Math-1.5B vs. Qwen2.5-1.5B), freeing LightReasoner from rigid scaling constraints.*
+- **领域专长胜于规模：** *专家-业余协作的成功最有效地由领域特定知识而非模型大小驱动（例如，Qwen2.5-Math-1.5B 与 Qwen2.5-1.5B），这使得 LightReasoner 摆脱了僵化的规模限制。*
 
-- **Dependence on Expertise Gap:** *Performance gains are closely correlated with the size of the expertise gap — as the Amateur approaches the Expert’s capability, contrastive signals weaken and improvements diminish.*
+- **依赖专长差距：** *性能提升与专长差距的大小密切相关 —— 当业余模型接近专家能力时，对比信号减弱，改进效果下降。*
 
 
 ---
@@ -470,9 +464,9 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 <p align="center">
   
-  <em>👈 Figure 4(a): Expert–Amateur Pairing Effects — Each point represents a fixed Expert model paired with an Amateur model. The performance gains achieved by LightReasoner diminish as the expertise gap narrows.</em><br>
+  <em>👈 图 4(a): 专家-业余配对效应 — 每个点代表一个固定的专家模型与一个业余模型配对。随着专长差距缩小，LightReasoner 实现的性能增益逐渐减弱。</em><br>
 
-  <em>👉 Figure 4(b): Impact of Ablation — Removing key components from LightReasoner consistently reduces performance, revealing their critical contributions.</em>
+  <em>👉 图 4(b): 消融实验的影响 — 从 LightReasoner 中移除关键组件会持续降低性能，揭示了它们的关键贡献。</em>
 
 </p>
 
@@ -488,42 +482,42 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 <!-- Left Table -->
   
-| **Attribute**        | **Time** | **SFT** | **LightR** |
+| **属性**        | **时间** | **SFT** | **LightR** |
 |-----------------------|----------------|---------|------------|
-| Full trajectories     | ⬆️          | ✅      | ❌         |
-| All-token tuning      | ⬆️          | ✅      | ❌         |
-| Prefix termination    | ⬇️          | ❌      | ✅         |
-| Selective tokens      | ⬇️          | ❌      | ✅         |
-| Verification-free     | ⬇️          | ❌      | ✅         |
+| 完整轨迹     | ⬆️          | ✅      | ❌         |
+| 全 Token 调优      | ⬆️          | ✅      | ❌         |
+| 前缀终止    | ⬇️          | ❌      | ✅         |
+| 选择性 Token      | ⬇️          | ❌      | ✅         |
+| 无需验证     | ⬇️          | ❌      | ✅         |
 
 </td>
 <td>
 
 <!-- Right Table -->
 
-| **Attribute**         | **Utility** | **CD**      | **LightR** |
+| **属性**         | **实用性** | **CD**      | **LightR** |
 |------------------------|------------------|-------------|------------|
-| Contrast usage         | /                | Inference   | Training   |
-| Size-based contrast    | ⬇️            | ✅          | ❌         |
-| Expertise contrast     | ⬆️            | ❌          | ✅         |
-| Persistent benefits    | ⬆️            | ❌          | ✅         |
-| Standalone inference  | ⬆️            | ❌          | ✅         |
+| 对比用法         | /                | 推理时   | 训练时   |
+| 基于规模的对比    | ⬇️            | ✅          | ❌         |
+| 基于专长的对比     | ⬆️            | ❌          | ✅         |
+| 持久性收益    | ⬆️            | ❌          | ✅         |
+| 独立推理  | ⬆️            | ❌          | ✅         |
 
 </td>
 </tr>
 </table>
 
-- 👈 *Left:* Efficiency contrasts at a glance. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the overall efficiency of the method. 
+- 👈 *左：* 效率对比一览。⬆️ 和 ⬇️ 表示每个方面是有助于还是损害方法的整体效率。 
   
-- 👉 *Right:* Key differences between traditional Contrastive Decoding (CD) methods and LightReasoner. ⬆️ and ⬇️ indicate whether each aspect helps or hurts the practicality of the method.
+- 👉 *右：* 传统对比解码 (CD) 方法与 LightReasoner 的关键区别。⬆️ 和 ⬇️ 表示每个方面是有助于还是损害方法的实用性。
 
 
 ---
 
 
-## ☕️ Citation
+## ☕️ 引用
 
-If you find this work useful, please consider citing our paper:
+如果您觉得这项工作有用，请考虑引用我们的论文：
 
 ```python
 @article{wang2025lightreasoner,
@@ -534,7 +528,7 @@ If you find this work useful, please consider citing our paper:
 }
 ```
 
-Thank you for your interest in our work!
+感谢您对我们工作的关注！
 
 
 ---
@@ -542,5 +536,5 @@ Thank you for your interest in our work!
 
 ## 📜 License
 
-This project is released under the [MIT License](./LICENSE).
+本项目根据 [MIT 许可证](./LICENSE) 发布。
 
