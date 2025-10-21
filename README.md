@@ -222,7 +222,7 @@ You’re *encouraged* to explore other model families (e.g., *Llama*), but keep 
 
 - You’re *absolutely* free to try other datasets — LightReasoner is fully adaptable. However, depending on your dataset, you may need to adjust hyperparameters and the choice of Amateur model to ensure stable training and meaningful contrasts.
 
-  - For instance, if you experiment with the **MATH** dataset, it’s recommended to upgrade the Amateur model from a generic **Qwen2.5** base model to the specialized **Qwen2.5-Math** variant. The base models were not math-pretrained and may struggle to produce coherent outputs on MATH, potentially destabilizing the expert–amateur contrast.
+  - For instance, if you experiment with the **MATH** dataset — a collection of high-school competition problems that are significantly harder than GSM8K — it’s recommended to upgrade the Amateur model from a generic **Qwen2.5** base model to the specialized **Qwen2.5-Math** variant. The base models were not math-pretrained and may struggle to produce coherent outputs on MATH, potentially destabilizing the expert–amateur contrast.
 
 
 ---
@@ -246,7 +246,7 @@ Before running the script, you should:
 
 - Adjust the maximum number of problems to control the size of your supervision dataset, tweak the sampling parameters to explore more optimal combinations, and tune the batch size based on your available compute resources.
 
-  - To give you a rough picture, in practice, we find that sampling **1,000 problems** from the GSM8K training set (with **β = 0.4**) yields approximately **20,000 LightReasoner contrast samples**, which is sufficient for **LoRA fine-tuning to converge** on the baseline models we tested.
+  - To give you a rough picture, in practice, we find that sampling **1,000 problems** from the GSM8K training set (with **β = 0.4**) yields approximately **20,000 LightReasoner contrast samples**, which is already sufficient for **LoRA fine-tuning to converge** on the baseline models we tested.
 
 
 #### ⚡ **Shortcut**
@@ -414,8 +414,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
   
     - *LightReasoner* trains on selective next-token predictions, whereas *SFT* optimizes over full reasoning trajectories — an *inherent* difference dictated by their respective training paradigms.  
 
-    - Thus, each *LightReasoner* training instance corresponds to a **single next-token prediction**, whereas each *SFT* example corresponds to a **full reasoning trajectory**.
-
+    - Thus, each *LightReasoner* training instance corresponds to a **single next-token prediction**, whereas each *SFT* example corresponds to a **full reasoning trajectory** comprising a consecutive series of next-token predictions.
 
 
 - 📈 **Efficiency Evaluation:** 
