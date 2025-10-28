@@ -82,11 +82,11 @@
 
 LightReasoner 在多个数据集上持续提升推理准确率：
 
-- 📈 **Qwen2.5-Math-1.5B:** GSM8K 上 +28.1%, MATH 上 +25.1%, SVAMP 上 +7.2%, ASDIV 上 +11.7%
+- 📈 **Qwen2.5-Math-1.5B:** GSM8K 上 +28.1%，MATH 上 +25.1%，SVAMP 上 +7.2%，ASDIV 上 +11.7%
 
-- 📈 **DeepSeek-R1-Distill-Qwen-1.5B:** GSM8K 上 +4.3%, MATH 上 +6.0%, OlympiadBench 上 +17.4%
+- 📈 **DeepSeek-R1-Distill-Qwen-1.5B:** GSM8K 上 +4.3%，MATH 上 +6.0%，OlympiadBench 上 +17.4%
 
-- 📈 **Qwen2.5-Math-7B:** GSM8K 上 +10.4%, MATH 上 +6.0%, SVAMP 上 +9.3%, ASDIV 上 +7.9%
+- 📈 **Qwen2.5-Math-7B:** GSM8K 上 +10.4%，MATH 上 +6.0%，SVAMP 上 +9.3%，ASDIV 上 +7.9%
 
 - 🌍 **强大的泛化能力：** 仅在 GSM8K 上训练，却在 **7 个基准测试** 上均有提升
 
@@ -234,11 +234,11 @@ python LightR_sampling.py --max_questions 1000
 
 - **`LR_Qwen1.5_gsm8k`** — 适用于 **Qwen2.5-Math-1.5B** 
 
-- We provide **two versions**, one sampled with **Torch 3.1** and another with **Torch 3.8**, as we found that the sampling results (i.e., the model’s generated outputs) can slightly vary across Torch versions.  
+- 我们提供了 **两个版本**，一个使用 **Torch 3.1** 进行采样，另一个使用 **Torch 3.8**。因为我们发现采样结果（既模型生成结果）会根据Torch版本变化有些许不同。
 
-- The performance fluctuation is minimal — typically within **2–3%**, with later Torch versions usually performing slightly better.
+- 上述的性能浮动非常小，通常在 **2–3%**以内，一般更靠后的Torch版本会表现得更好。
 
-These datasets make it **much easier to reproduce** our results directly — no additional sampling required! ✨
+使用这些数据集能够 **更轻松** 直接复现我们的成果，并且不需要做额外的采样! ✨
 
 
 
@@ -300,38 +300,38 @@ tail -f finetune.log
 
 - 🔹 将 `<output_directory>` 替换为保存检查点和最终模型的目录。
 
-- 🔹 根据您的硬件设置 `torch_dtype` *(例如，**H100** 用 `torch.bfloat16`, **A100** 用 `torch.float16`).*
+- 🔹 根据您的硬件设置 `torch_dtype` *(例如，**H100** 用 `torch.bfloat16`，**A100** 用 `torch.float16`).*
 
 
 ---
 
 
-### 🔗 Model Merging
+### 🔗 模型合并
 
-Use this step to **merge the full model** (base + LoRA) locally, so it behaves as a **standalone model** without any LoRA dependency.
+通过这一步在本地 **合并完整的模型** (基准 + LoRA)，这样它可以被 **独自使用**，不需要其他LoRA相关的配置。
 
 ```bash
 python merge.py
 ```
 
-#### 📋 Note
-Before running the merge script, update the **config section** with your own paths: 
+#### 📋 说明
+在运行合并脚本之前，使用你自己的路径编辑 **配置部分**: 
 
-- 🔹 `base_model_path` to your base model directory *(e.g., `./Qwen2.5-Math-7B`)* 
+- 🔹 `base_model_path` 是你的基础模型路径 *(例如，`./Qwen2.5-Math-7B`)* 
 
-- 🔹 `lora_ckpt_path` to your LoRA checkpoint directory *(e.g., `./ft_qw7_gsm8k/checkpoint-1000`)*  
+- 🔹 `lora_ckpt_path` 是你的LoRA检查点路径 *(例如，`./ft_qw7_gsm8k/checkpoint-1000`)*  
 
-- 🔹 `merged_model_path` to where you want the merged model to be saved *(e.g., `./ft-7B-merged`)*
+- 🔹 `merged_model_path` 是你想保存合并后模型的路径 *(例如，`./ft-7B-merged`)*
 
 
 ---
 
 
-### 📈 Evaluation
+### 📈 性能评估
 
-All evaluations are performed using the **official Qwen2.5-Math toolkit**.  
+所有的性能评估都使用 **Qwen2.5-Math官方工具** 完成。  
 
-Please refer to the [`evaluation`](./evaluation) folder for detailed usage and setup instructions.
+具体使用指南请参考 [`evaluation`](./evaluation) 文件夹。
 
 
 ---
@@ -339,39 +339,39 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 ## 📊 主要结果
 
-| Model                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | AVG. |
+| 模型                                         | GSM8K | MATH | SVAMP | ASDiv | Minerva Math | Olympiad Bench | MMLU STEM | 平均分 |
 |-----------------------------------------------|-------|------|-------|-------|-------------------|---------------|----------------|------|
 | **<nobr>Qwen2.5-Math-1.5B</nobr>**            |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 42.5  | 34.2 | 68.8  | 68.1  | 9.9               | 23.7          | 49.8           | 42.4 |
-| + SFT                                         | 69.2  | 57.1 | 64.1  | 70.2  | **15.1**          | **27.6**      | 47.7           | 50.1 |
+| 基础模型                                      | 42.5  | 34.2 | 68.8  | 68.1  | 9.9               | 23.7          | 49.8           | 42.4 |
+| + 监督微调                                         | 69.2  | 57.1 | 64.1  | 70.2  | **15.1**          | **27.6**      | 47.7           | 50.1 |
 | + LightR                                      | **70.6** | **59.3** | **76.0** | **79.8** | 11.4 | 27.1 | **54.9** | **54.2** |
 | **<nobr>Qwen2.5-Math-1.5B-Instruct</nobr>**   |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 84.8  | 75.8 | 94.2  | 94.7  | 29.4              | 37.5          | 57.4           | 67.7 |
-| + SFT                                         | 85.4  | 75.8 | 93.5  | 94.7  | 31.6              | 37.5          | 56.2           | 67.8 |
+| 基础模型                                      | 84.8  | 75.8 | 94.2  | 94.7  | 29.4              | 37.5          | 57.4           | 67.7 |
+| + 监督微调                                         | 85.4  | 75.8 | 93.5  | 94.7  | 31.6              | 37.5          | 56.2           | 67.8 |
 | + LightR                                      | **86.7** | 75.5 | 93.0 | 94.1 | **32.0** | **37.8** | 55.2 | **67.8** |
 | **<nobr>DeepSeek-R1-Distill-Qwen-1.5B</nobr>**|       |      |       |       |                   |               |                |      |
-| Baseline                                      | 75.2  | 54.2 | 79.9  | 84.9  | 16.2              | 19.1          | 22.3           | 50.3 |
-| + SFT                                         | 78.2  | **60.3** | 81.5 | 87.4 | **18.4** | 21.2 | 26.2 | 53.3 |
+| 基础模型                                      | 75.2  | 54.2 | 79.9  | 84.9  | 16.2              | 19.1          | 22.3           | 50.3 |
+| + 监督微调                                         | 78.2  | **60.3** | 81.5 | 87.4 | **18.4** | 21.2 | 26.2 | 53.3 |
 | + LightR                                      | **79.5** | 60.2 | **83.5** | **87.5** | 18.0 | **36.5** | **26.2** | **55.9** |
 | **<nobr>Qwen2.5-Math-7B</nobr>**              |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 57.5  | 51.8 | 67.9  | 72.7  | 14.0              | 16.0          | 69.8           | 50.0 |
-| + SFT                                         | 64.4  | **63.3** | 76.2 | 76.6 | 12.1 | **20.5** | 68.5 | 54.5 |
+| 基础模型                                      | 57.5  | 51.8 | 67.9  | 72.7  | 14.0              | 16.0          | 69.8           | 50.0 |
+| + 监督微调                                         | 64.4  | **63.3** | 76.2 | 76.6 | 12.1 | **20.5** | 68.5 | 54.5 |
 | + LightR                                      | **67.9** | 57.8 | **77.2** | **80.6** | 12.1 | 16.9 | **70.5** | **54.7** |
 | **<nobr>Qwen2.5-Math-7B-Instruct</nobr>**     |       |      |       |       |                   |               |                |      |
-| Baseline                                      | 95.2  | 83.2 | 93.9  | 95.3  | 33.8              | 41.5          | 69.3           | 73.2 |
-| + SFT                                         | 95.4  | 83.1 | **94.1** | 95.2 | **38.2** | 40.7 | 68.2 | **73.6** |
+| 基础模型                                      | 95.2  | 83.2 | 93.9  | 95.3  | 33.8              | 41.5          | 69.3           | 73.2 |
+| + 监督微调                                         | 95.4  | 83.1 | **94.1** | 95.2 | **38.2** | 40.7 | 68.2 | **73.6** |
 | + LightR                                      | **95.8** | **83.6** | 93.1 | 95.2 | 34.2 | 39.0 | 67.8 | 72.7 |
 
 
-- Trained *solely* on GSM8K, LightReasoner generalizes effectively for 5 baseline models, achieving consistent gains across 7 benchmarks.
+- *仅在* GSM8K上训练，LightReasoner 在5个基础模型上都能很好地泛化，在7个指标上都有显著提升。
 
-- **+28.1%** on GSM8K, **+25.1%** on MATH, **+7.2%** on SVAMP, **+11.7%** on ASDIV for Qwen2.5-Math-1.5B.  
+- 对于Qwen2.5-Math-1.5B，在GSM8K上有 **+28.1%** ，在MATH上有 **+25.1%**，在SVAMP上有 **+7.2%**，在ASDIV上有 **+11.7%** 的提升。
 
-- **+4.3%** on GSM8K, **+6.0%** on MATH, **+17.4%** on OlympiadBench for DeepSeek-R1-Distill-Qwen-1.5B. 
+- 对于DeepSeek-R1-Distill-Qwen-1.5B，在GSM8K上有 **+4.3%** ，在MATH上有 **+6.0%**，在OlympiadBench上有 **+17.4%** 的提升。
 
-- **+10.4%** on GSM8K, **+6.0%** on MATH, **+9.3%** on SVAMP, **+7.9%** on ASDIV for Qwen2.5-Math-7B.  
+- 对于Qwen2.5-Math-7B，在GSM8K上有 **+10.4%** ，在MATH上有 **+6.0%**，在SVAMP上有 **+9.3%**，在ASDIV上有 **+7.9%** 的提升。
 
-- Efficiency vs. SFT: **90% less total time**, **80% fewer sampled problems**, **99% fewer tuned tokens**.  
+- 与监督微调的效率对比: **时间减少90%**，**采样的题目减少80%**，**微调的token减少99%**.  
 
 
 ---
@@ -396,11 +396,16 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 
 - 🧑‍🏫 **监督微调 (SFT)：**  
-  - Implemented with rejection sampling, where models are fine-tuned on demonstrations of correct reasoning trajectories.
 
   - 通过拒绝采样实现，模型在正确的推理轨迹演示上进行微调。
 
-  - 为公平比较，SFT 采用与 LightReasoner *相同的* 实验配置，仅在 *GSM8K训练集上* 进行基于 LoRA 的微调。  
+  - 为公平比较，SFT 采用与 LightReasoner *相同的* 实验配置，仅在 *GSM8K训练集上* 进行基于 LoRA 的微调。 
+
+  - 🎯 **核心区别:**  
+  
+    - *LightReasoner* 有选择性地在token预测上进行训练，而 *SFT* 在整条推理轨迹上训练。
+
+    - 因此，每一个 *LightReasoner* 训练实例都对应了 **单一token预测**，而每一个 *SFT* 实例对应 **整条推理轨迹** ，由一连串token预测组成
 
 
 - 📈 **效率评估：**  
@@ -455,7 +460,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 
 ---
 
-## 🔍 More Insights
+## 🔍 更多洞察
 
 <p align="center">
   <img src="./assets/gap_vs_perf.png" alt="Sampling Stage" width="55.5%"/>
@@ -474,7 +479,7 @@ Please refer to the [`evaluation`](./evaluation) folder for detailed usage and s
 ---
 
 
-## 🏆 Comparison with Competing Methods
+## 🏆 与竞品方法的对比
 
 <table>
 <tr>
