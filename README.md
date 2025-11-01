@@ -37,12 +37,8 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 
 
 <p align="center">
-  <a href="README.md">
-    <img src="https://img.shields.io/badge/English-silver?style=for-the-badge&labelColor=1a1a2e" alt="English Version">
-  </a>
-  <a href="README-zh.md">
-    <img src="https://img.shields.io/badge/中文版-silver?style=for-the-badge&labelColor=1a1a2e" alt="Chinese Version">
-  </a>
+	<a href="#"><img src="https://img.shields.io/badge/English-1a1a2e?style=for-the-badge"></a>
+  <a href="README-zh.md"><img src="https://img.shields.io/badge/中文版-1a1a2e?style=for-the-badge"></a>
 </p>
 
 
