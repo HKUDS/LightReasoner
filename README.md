@@ -35,6 +35,17 @@ Can <strong><em>SMALL</em></strong> Language Models Teach <strong><em>LARGE</em>
 <a href="https://github.com/HKUDS/LightReasoner/stargazers"><img src="https://img.shields.io/github/stars/HKUDS/LightReasoner?color=00d9ff&style=for-the-badge&logo=github&logoColor=white&labelColor=1a1a2e&label=Stars" alt="GitHub stars">
 </a>
 
+
+<p align="center">
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/English-silver?style=for-the-badge&labelColor=1a1a2e" alt="English Version">
+  </a>
+  <a href="README-zh.md">
+    <img src="https://img.shields.io/badge/中文版-silver?style=for-the-badge&labelColor=1a1a2e" alt="Chinese Version">
+  </a>
+</p>
+
+
 <a href="./Communication.md"><img src="https://img.shields.io/badge/💬Feishu-Group-07c160?style=for-the-badge&logoColor=white&labelColor=1a1a2e"></a>
 <a href="./Communication.md"><img src="https://img.shields.io/badge/WeChat-Group-07c160?style=for-the-badge&logo=wechat&logoColor=white&labelColor=1a1a2e"></a>
 
