@@ -68,6 +68,7 @@ This efficiency breakthrough shows that **strategic token selection**, rather th
 
 
 ## 🎉 News
+- [x] [2026/04/06] 🚀 LightReasoner has been accepted to the ACL 2026 Main Conference! Many thanks to all co-authors and collaborators for their support.
 - [x] [2025/10/14] 🚀 New Release: [`LRsamples`](./LRsamples) — **Pre-collected LightReasoner training samples** ready for immediate fine-tuning. This dataset enables direct model training without requiring the full sampling pipeline, streamlining reproduction efforts and accelerating downstream research workflows.
 - [x] [2025/10/14] 🚀 New Release: **LightReasoner Enhanced Models** now available on 🤗 [Hugging Face Hub](https://huggingface.co/collections/bearthecoder/lightreasoner-models-68edbf175755ca5a8c699f9c). Ready-to-use models fine-tuned with our efficient reasoning enhancement approach for immediate deployment and experimentation.
 - [x] [2025/10/12] 🚀 New Release: Core implementation with Qwen2.5-Math and DeepSeek-R1 models.
