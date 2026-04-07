@@ -75,8 +75,8 @@ if os.path.exists(checkpoint_path):
 # === Run CDRS sampling over prompts ===
 sampled_dataset = []
 
-for prompt_obj in tqdm(prompts, desc="Processing prompts"):
-    prompt_id = prompt_obj["id"]
+for i, prompt_obj in enumerate(tqdm(prompts, desc="Processing prompts")):
+    prompt_id = prompt_obj.get("id", i)
     if prompt_id in processed_ids:
         continue
 
@@ -98,58 +98,47 @@ for prompt_obj in tqdm(prompts, desc="Processing prompts"):
     )
 
     expert_targets = outputs.sequences[0][model_inputs.input_ids.shape[1]:].tolist()
-    expert_probs = [F.softmax(score[0], dim=-1) for score in outputs.scores]
+    expert_probs = [F.softmax(score[0], dim=-1).cpu() for score in outputs.scores]
 
-    input_ids_batch = []
-    for step in range(1, len(expert_targets)):
-        # assistant_prefix = tokenizer.decode(expert_targets[:step])
-        # messages = [
-        #     {"role": "system", "content": sys_prompt},
-        #     {"role": "user", "content": question},
-        #     {"role": "assistant", "content": assistant_prefix}
-        # ]
-        # formatted = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        
-        assistant_prefix = tokenizer.decode(expert_targets[:step])
-        messages = [
-            {"role": "system", "content": sys_prompt},
-            {"role": "user", "content": question}
-        ]
-        formatted = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        formatted += assistant_prefix  # Append prefix manually
-        
-        input_ids = tokenizer(formatted, return_tensors="pt").input_ids[0]
-        input_ids_batch.append(input_ids)
-
-
-        '''Debug'''
-
-        # # === DEBUG LOG for the first sample only ===
-        # if i == 1 and step < 16:
-        #     print("\n [DEBUG] Amateur model input (formatted prompt + prefix):")
-        #     print(formatted)
-        #     print("\n Tokenized & Decoded:")
-        #     decoded_check = tokenizer.decode(input_ids, skip_special_tokens=False)
-        #     print(decoded_check)
-
-
-    amateur_probs_all = []
+    # === Optimization: Single Forward Pass for Amateur Model ===
+    # Instead of N forward passes for N tokens, we concatenate the prompt and the full expert response
+    # and run a single forward pass. Causal masking ensures that at each position t, 
+    # the model only sees tokens [0...t], effectively predicting t+1.
+    
+    # 1. Reconstruct the base prompt (without the expert's generation)
+    messages = [
+        {"role": "system", "content": sys_prompt},
+        {"role": "user", "content": question}
+    ]
+    prompt_text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+    prompt_inputs = tokenizer(prompt_text, return_tensors="pt").to(device)
+    prompt_ids = prompt_inputs.input_ids[0]
+    
+    # 2. Concatenate Prompt + Expert Response
+    expert_ids_tensor = torch.tensor(expert_targets, device=device, dtype=torch.long)
+    full_input_ids = torch.cat([prompt_ids, expert_ids_tensor], dim=0).unsqueeze(0) # [1, Seq_Len]
+    
+    # 3. Single Forward Pass
     with torch.no_grad():
-        for i in range(0, len(input_ids_batch), batch_size):
-            batch_chunk = input_ids_batch[i:i+batch_size]
-            padded = torch.nn.utils.rnn.pad_sequence(batch_chunk, batch_first=True, padding_value=tokenizer.pad_token_id).to(device, non_blocking=True)
-            attention_mask = (padded != tokenizer.pad_token_id).long()
-            logits = amateur_model(padded, attention_mask=attention_mask).logits
-
-            for j, seq_len in enumerate([x.size(0) for x in batch_chunk]):
-                next_token_logits = logits[j, seq_len - 1, :]
-                probs = F.softmax(next_token_logits, dim=-1)
-                amateur_probs_all.append(probs)
+        outputs = amateur_model(full_input_ids)
+        logits = outputs.logits # [1, Seq_Len, Vocab]
+        
+        # 4. Extract relevant logits
+        # We need predictions for the expert's tokens.
+        # The logit at index `i` predicts the token at `i+1`.
+        # Prompt length is P. Expert tokens start at P.
+        # We need logits from index P-1 (predicting Expert[0]) to P+E-2 (predicting Expert[E-1]).
+        
+        start_idx = prompt_ids.size(0) - 1
+        end_idx = full_input_ids.size(1) - 1
+        
+        relevant_logits = logits[:, start_idx:end_idx, :] # [1, Expert_Len, Vocab]
+        amateur_probs_sequence = F.softmax(relevant_logits, dim=-1).cpu() # Move to CPU immediately
 
     samples_this_prompt = 0
     for step in range(1, len(expert_targets)):
         expert_dist = expert_probs[step]
-        amateur_dist = amateur_probs_all[step - 1]
+        amateur_dist = amateur_probs_sequence[0, step, :]
 
         min_vocab_size = min(expert_dist.size(0), amateur_dist.size(0))
         expert_dist = expert_dist[:min_vocab_size]
