@@ -136,7 +136,9 @@ class SoftLabelKLTrainer(Trainer):
         ).logits
 
         vocab_size = inputs["labels"].size(-1)
-        logits = logits[:, -1, :vocab_size]  # [batch_size, vocab_size]
+        last_token_indices = inputs["attention_mask"].sum(dim=1) - 1
+        batch_indices = torch.arange(logits.size(0), device=logits.device)
+        logits = logits[batch_indices, last_token_indices, :vocab_size]
 
         log_probs = F.log_softmax(logits, dim=-1)
         soft_labels = inputs["labels"]
