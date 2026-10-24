@@ -1,3 +1,4 @@
+import json
 import re
 import torch
 from datasets import load_dataset
@@ -83,4 +84,19 @@ for ex in dataset:
 
 accuracy = correct / len(dataset)
 print(f"GSM8K Accuracy with Qwen/Qwen2.5-Math-7B-Instruct: {accuracy:.2%}")
-wrong = open("wrong_answers.txt", "x")
+
+
+def write_wrong_answers(wrong_examples, output_path="wrong_answers.txt"):
+    """Write each incorrect prediction as a UTF-8 JSON Lines record."""
+    with open(output_path, "x", encoding="utf-8") as wrong_file:
+        for prompt, response, predicted_answer, gold_answer in wrong_examples:
+            record = {
+                "question": prompt,
+                "response": response,
+                "predicted_answer": predicted_answer,
+                "gold_answer": gold_answer,
+            }
+            wrong_file.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+
+write_wrong_answers(wrong)
