@@ -6,6 +6,16 @@ import json
 import argparse
 
 
+def _build_amateur_context(prompt_ids, prompt_attention_mask, generated_ids, step):
+    """Append generated token IDs without decoding and retokenizing the prefix."""
+    generated_prefix = generated_ids[:, :step]
+    context_ids = torch.cat((prompt_ids, generated_prefix), dim=1)
+    context_mask = torch.cat(
+        (prompt_attention_mask, torch.ones_like(generated_prefix)), dim=1
+    )
+    return context_ids, context_mask
+
+
 # Optimize matmul precision for faster H100 execution
 torch.set_float32_matmul_precision('high')
 
@@ -68,21 +78,20 @@ for prompt_obj in tqdm(prompts, desc="Processing prompts"):
             return_dict_in_generate=True
         )
 
-    expert_targets = outputs.sequences[0][model_inputs.input_ids.shape[1]:].tolist()
+    expert_generated_ids = outputs.sequences[:, model_inputs.input_ids.shape[1]:]
+    expert_targets = expert_generated_ids[0].tolist()
     expert_probs = [F.softmax(score[0], dim=-1) for score in outputs.scores]
     expert_top1s = [torch.argmax(prob).item() for prob in expert_probs]
 
     for step in range(1, len(expert_targets)):
-        prefix = tokenizer.decode(expert_targets[:step])
-        messages = [
-            {"role": "system", "content": sys_prompt},
-            {"role": "user", "content": question}
-        ]
-        formatted = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        formatted += prefix
-
-        input_ids = tokenizer(formatted, return_tensors="pt").input_ids.to(device)
-        attention_mask = (input_ids != tokenizer.pad_token_id).long()
+        input_ids, attention_mask = _build_amateur_context(
+            model_inputs.input_ids,
+            model_inputs.attention_mask,
+            expert_generated_ids,
+            step,
+        )
+        input_ids = input_ids.to(device)
+        attention_mask = attention_mask.to(device)
 
         with torch.no_grad():
             logits = amateur_model(input_ids, attention_mask=attention_mask).logits
