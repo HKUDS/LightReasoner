@@ -5,7 +5,7 @@ Edit placeholders below to point to your log and tweak thresholds.
 
 import json
 from collections import defaultdict
-from math import floor
+from math import ceil, floor
 from statistics import mean
 from typing import List
 
@@ -28,6 +28,25 @@ max_bin = 5.0              # values ≥ max_bin go to overflow bin "max_bin+"
 # =====================
 def _safe_avg(values: List[float]) -> float:
     return mean(values) if values else float("nan")
+
+
+def _kl_histogram_bins(records: List[dict], bin_width: float, max_bin: float):
+    """Return exact regular intervals and a separate overflow interval."""
+    num_bins = ceil(max_bin / bin_width)
+    bin_counts = defaultdict(int)
+
+    for record in records:
+        kl = record["kl_divergence"]
+        bin_index = floor(kl / bin_width) if kl < max_bin else num_bins
+        bin_counts[bin_index] += 1
+
+    bins = []
+    for index in range(num_bins):
+        lower = index * bin_width
+        upper = min((index + 1) * bin_width, max_bin)
+        bins.append((lower, upper, bin_counts[index]))
+    bins.append((max_bin, None, bin_counts[num_bins]))
+    return bins
 
 # =====================
 # Load records once
@@ -89,22 +108,10 @@ print("✅ These targeted stats are directly usable in Section 2.1 to support em
 # =====================
 # KL histogram (single pass)
 # =====================
-num_bins = int(max_bin / bin_width)
-bin_counts = defaultdict(int)
-
-for r in records:
-    kl = r["kl_divergence"]
-    if kl < max_bin:
-        bin_index = floor(kl / bin_width)
-    else:
-        bin_index = num_bins  # overflow bin
-    bin_counts[bin_index] += 1
-
 print("🔍 KL Divergence Histogram (Bin Width = {:.1f})".format(bin_width))
-count_total = sum(bin_counts.values())
-for i in range(num_bins + 1):
-    lower = i * bin_width
-    upper = (i + 1) * bin_width if i < num_bins else f"{max_bin}+"
-    count = bin_counts[i]
+histogram_bins = _kl_histogram_bins(records, bin_width, max_bin)
+count_total = sum(count for _, _, count in histogram_bins)
+for lower, upper, count in histogram_bins:
     pct = (count / count_total * 100) if count_total > 0 else 0.0
-    print(f"[{lower:.1f}, {upper}) : {count} tokens ({pct:.2f}%)")
+    interval_end = f"{upper:.1f}" if upper is not None else f"{max_bin:.1f}+"
+    print(f"[{lower:.1f}, {interval_end}) : {count} tokens ({pct:.2f}%)")
