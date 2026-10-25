@@ -33,6 +33,9 @@ def first_diff(ids_a, ids_b, start=0, end=None):
     return None, None, None
 
 def sample_diffs(ids_a, ids_b, limit=10):
+    if limit == 0:
+        return []
+
     diffs = []
     m = min(len(ids_a), len(ids_b))
     for i in range(m):
