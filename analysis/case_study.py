@@ -28,25 +28,38 @@ def load_report(path):
                 print(f"⚠️ Skipping line {i+1} in {path} due to JSON error: {e}")
     return data
 
+def write_improved_comparisons(base_data, fine_tuned_data, output_path):
+    count = 0
+    unmatched_count = 0
+
+    with open(output_path, 'w', encoding='utf-8') as f:
+        for idx, ft_entry in fine_tuned_data.items():
+            base_entry = base_data.get(idx)
+            if base_entry is None:
+                unmatched_count += 1
+                continue
+
+            base_score = base_entry["score"][0]
+            ft_score = ft_entry["score"][0]
+
+            if not base_score and ft_score:
+                f.write("Base model:\n")
+                f.write(json.dumps(base_entry, ensure_ascii=False, indent=2))
+                f.write("\n\nFine-tuned model:\n")
+                f.write(json.dumps(ft_entry, ensure_ascii=False, indent=2))
+                f.write("\n\n" + "="*80 + "\n\n")
+                count += 1
+
+    return count, unmatched_count
+
+
 base_data = load_report(base_model_path)
 fine_tuned_data = load_report(fine_tuned_path)
+count, unmatched_count = write_improved_comparisons(
+    base_data, fine_tuned_data, output_path
+)
 
-# === Write comparison text ===
-with open(output_path, 'w', encoding='utf-8') as f:
-    count = 0
-    for idx in fine_tuned_data:
-        base_entry = base_data.get(idx)
-        ft_entry = fine_tuned_data[idx]
-        
-        base_score = base_entry.get("score", [False])[0] if base_entry else False
-        ft_score = ft_entry["score"][0]
-
-        if not base_score and ft_score:
-            f.write("Base model:\n")
-            f.write(json.dumps(base_entry, ensure_ascii=False, indent=2))
-            f.write("\n\nFine-tuned model:\n")
-            f.write(json.dumps(ft_entry, ensure_ascii=False, indent=2))
-            f.write("\n\n" + "="*80 + "\n\n")
-            count += 1
-
-print(f"✅ Wrote {count} improved question comparisons to {output_path}")
+print(
+    f"✅ Wrote {count} improved question comparisons to {output_path}; "
+    f"skipped {unmatched_count} fine-tuned results with no base match"
+)
