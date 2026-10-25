@@ -61,19 +61,49 @@ with open(input_path, "r", encoding="utf-8") as f:
 if args.max_questions:
     prompts = prompts[:args.max_questions]
 
-# === Load Checkpoint (if exists) ===
-processed_ids = set()
-if os.path.exists(checkpoint_path):
-    with open(checkpoint_path, "r") as f:
+# === Restore completed output and checkpoint state ===
+prompt_ids = {prompt["id"] for prompt in prompts}
+sampled_dataset = []
+output_sample_counts = {}
+if os.path.exists(output_path):
+    with open(output_path, "r", encoding="utf-8") as f:
         for line in f:
             try:
                 record = json.loads(line)
-                processed_ids.add(record["prompt_id"])
-            except:
+                prompt_id = record["prompt_id"]
+            except json.JSONDecodeError:
+                continue
+            sampled_dataset.append(record)
+            output_sample_counts[prompt_id] = output_sample_counts.get(prompt_id, 0) + 1
+
+checkpoint_sample_counts = {}
+if os.path.exists(checkpoint_path):
+    with open(checkpoint_path, "r", encoding="utf-8") as f:
+        for line in f:
+            try:
+                record = json.loads(line)
+                checkpoint_sample_counts[record["prompt_id"]] = int(record["num_samples"])
+            except json.JSONDecodeError:
                 continue
 
+processed_ids = set()
+incomplete_output_ids = set()
+for prompt_id, sample_count in checkpoint_sample_counts.items():
+    if sample_count == 0:
+        processed_ids.add(prompt_id)
+    elif output_sample_counts.get(prompt_id) == sample_count:
+        processed_ids.add(prompt_id)
+    elif prompt_id in prompt_ids:
+        incomplete_output_ids.add(prompt_id)
+
+if incomplete_output_ids:
+    sampled_dataset = [
+        record for record in sampled_dataset if record["prompt_id"] not in incomplete_output_ids
+    ]
+
+processed_ids.update(output_sample_counts.keys() - checkpoint_sample_counts.keys())
+
 # === Run CDRS sampling over prompts ===
-sampled_dataset = []
 
 for prompt_obj in tqdm(prompts, desc="Processing prompts"):
     prompt_id = prompt_obj["id"]
