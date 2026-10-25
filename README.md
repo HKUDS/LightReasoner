@@ -124,7 +124,7 @@ Taking `Qwen2.5-Math-1.5B` as an example, LightReasoner achieves dramatic effici
 
 - ⏱️ **90% less total time:** 4 hours → 0.5 hours 
 
-- 🧾 **80% fewer sampled problems:** 3,952 → 1,000 problems  
+- 🧾 **75% fewer sampled problems:** 3,952 → 1,000 problems
 
 - 🔢 **99% fewer tuned tokens:** 1.77M → 20K tokens  
 
