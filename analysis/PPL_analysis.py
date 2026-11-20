@@ -115,15 +115,18 @@ def compute_ppl(model, dataloader):
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits
 
+            # Causal-LM logits at position t predict the label at position t + 1.
+            shift_logits = logits[..., :-1, :].contiguous()
+            shift_labels = labels[..., 1:].contiguous()
             loss = F.cross_entropy(
-                logits.view(-1, logits.size(-1)),
-                labels.view(-1),
+                shift_logits.view(-1, shift_logits.size(-1)),
+                shift_labels.view(-1),
                 ignore_index=-100,
                 reduction="sum"
             )
 
             total_loss += loss.item()
-            total_tokens += (labels != -100).sum().item()
+            total_tokens += (shift_labels != -100).sum().item()
 
     ppl = math.exp(total_loss / total_tokens)
     return ppl

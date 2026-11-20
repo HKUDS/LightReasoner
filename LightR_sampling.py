@@ -61,7 +61,31 @@ with open(input_path, "r", encoding="utf-8") as f:
 if args.max_questions:
     prompts = prompts[:args.max_questions]
 
-# === Load Checkpoint (if exists) ===
+# === Restore completed output and checkpoint state ===
+prompt_ids = {prompt["id"] for prompt in prompts}
+sampled_dataset = []
+output_sample_counts = {}
+if os.path.exists(output_path):
+    with open(output_path, "r", encoding="utf-8") as f:
+        for line in f:
+            try:
+                record = json.loads(line)
+                prompt_id = record["prompt_id"]
+            except json.JSONDecodeError:
+                continue
+            sampled_dataset.append(record)
+            output_sample_counts[prompt_id] = output_sample_counts.get(prompt_id, 0) + 1
+
+checkpoint_sample_counts = {}
+if os.path.exists(checkpoint_path):
+    with open(checkpoint_path, "r", encoding="utf-8") as f:
+        for line in f:
+            try:
+                record = json.loads(line)
+                checkpoint_sample_counts[record["prompt_id"]] = int(record["num_samples"])
+            except json.JSONDecodeError:
+                continue
+
 processed_ids = set()
 if os.path.exists(checkpoint_path):
     with open(checkpoint_path, "r") as f:
